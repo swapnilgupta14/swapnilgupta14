@@ -40,3 +40,10 @@ Here are some ideas to get you started:
     <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=flat-square&logo=amazon-aws&logoColor=white" alt="AWS">
   </a>
 </p>
+
+<p align="center"> 
+  Visitors count<br>
+  <img src="https://profile-counter.glitch.me/swapnilgupta14/count.svg" />
+</p>
+
+<img src="stats.gif" width="90%"><br/><br/>
