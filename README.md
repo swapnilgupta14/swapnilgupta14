@@ -1,5 +1,3 @@
-### Hi there 👋
-
 <!--
 **swapnilgupta14/swapnilgupta14** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
@@ -14,6 +12,7 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+[![Swapnil's GitHub stats](https://github-readme-stats.vercel.app/api?username=swapnilgupta14)](https://github.com/swapnilgupta14/github-readme-stats)
 <p align="center">
   <a href="https://www.python.org/" target="_blank">
     <img src="https://img.shields.io/badge/Python-%2314354C.svg?style=flat-square&logo=python&logoColor=white" alt="Python">
