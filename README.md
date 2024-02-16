@@ -12,7 +12,10 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
-[![Swapnil's GitHub stats](https://github-readme-stats.vercel.app/api?username=swapnilgupta14)](https://github.com/swapnilgupta14/github-readme-stats)
+[![Swapnil's GitHub stats]
+<div style={{background-color: 'red'}}>
+  (https://github-readme-stats.vercel.app/api?username=swapnilgupta14)](https://github.com/swapnilgupta14/github-readme-stats)
+</div>
 <p align="center">
   <a href="https://www.python.org/" target="_blank">
     <img src="https://img.shields.io/badge/Python-%2314354C.svg?style=flat-square&logo=python&logoColor=white" alt="Python">
