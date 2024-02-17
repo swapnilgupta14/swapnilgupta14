@@ -12,8 +12,7 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=swapnilgupta14&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage)
-[![Swapnil's GitHub stats](https://github-readme-stats.vercel.app/api?username=swapnilgupta14)](https://github.com/swapnilgupta14/github-readme-stats)
+
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=swapnilgupta14&show_icons=true&theme=radical)
 <p align="center">
   <a href="https://www.python.org/" target="_blank">
@@ -41,10 +40,4 @@ Here are some ideas to get you started:
     <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=flat-square&logo=amazon-aws&logoColor=white" alt="AWS">
   </a>
 </p>
-
-<p align="center"> 
-  Visitors count<br>
-  <img src="https://profile-counter.glitch.me/swapnilgupta14/count.svg" />
-</p>
-
 <img src="stats.gif" width="90%"><br/><br/>
