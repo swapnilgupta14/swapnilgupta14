@@ -13,3 +13,4 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 Hii! there 🔭
+<img src="https://img.shields.io/badge/status-approved-green"> 
