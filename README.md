@@ -2,12 +2,7 @@
 <h3 style="text-align: center;">Full Stack Developer && Machine Learning Enthusiast</h3>
 
 <ul style="list-style: none; padding-left: 0;">
-  <li>
-     How to reach me: **mail.swapnilgupta@gmail.com**
-  </li>
-  <li>
-    ⚡ Fun fact: **I think I am Omniscient**
-  </li>
+ 
 </ul>
 
 <h3 style="text-align: left;">Connect with me:</h3>
