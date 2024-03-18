@@ -13,8 +13,8 @@
 <h3 style="text-align: left;">Connect with me:</h3>
 
 <ul style="list-style: none; padding-left: 0;">
-  <li><a href="#">Link to your social media 1</a></li>
-  <li><a href="#">Link to your social media 2</a></li>
+  <li><a href="https://www.linkedin.com/in/swapnilgupta-ln/">Connect with me on LinkedIn</a></li>
+  <li><a href="mail.swapnilgupta@gmail.com">Mail Me</a></li>
 </ul>
 
 <h3 style="text-align: left;">Languages and Tools:</h3>
