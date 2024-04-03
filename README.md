@@ -16,18 +16,3 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png" alt="C++" height="40"/>
   <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python" height="40"/>
 </p>
-
-<p align="center">
-  <img src="https://static-00.iconduck.com/assets.00/node-js-icon-227x256-913nazt0.png" alt="NodeJS" height="40"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png" alt="Bootstrap" height="40"/>
-  <img src="https://icon-library.com/images/django-icon/django-icon-0.jpg" alt="Django" height="40"/>
-  <img src="https://e7.pngegg.com/pngimages/654/56/png-clipart-flask-web-framework-python-software-framework-jinja-flask-miscellaneous-monochrome-thumbnail.png" alt="Flask" height="40"/>
-</p>
-
-<p align="center">
-  <img src="https://pngimg.com/uploads/mysql/mysql_PNG11.png" alt="MySQL" height="40"/>
-  <img src="https://cdn4.iconfinder.com/data/icons/google-i-o-2016/512/google_firebase-2-512.png" alt="Firebase" height="40"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1985px-Postgresql_elephant.svg.png" alt="PostgreSQL" height="40"/>
-  <img src="https://www.dbi-services.com/wp-content/uploads/2022/01/Logo-Mongodb-carre.png" alt="MongoDB" height="40"/>
-  <img src="https://d28yx2zopyx2ad.cloudfront.net/assets/redis.png" alt="Redis" width="40" height="40"/>
-</p>
