@@ -1,5 +1,4 @@
 <h1 align="center">Hi, I'm Swapnil Gupta</h1>
-<h3 align="center">Full Stack Developer & Machine Learning Enthusiast</h3>
 
 <p align="center">
   <a href="https://www.linkedin.com/in/swapnilgupta-ln/">Connect with me on LinkedIn</a> •
