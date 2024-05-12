@@ -18,8 +18,8 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React" height="35"/>  &nbsp;
 </p>
 <a href="https://github.com/swapnilgupta14/statistics">
-  <img height=200 align="center" src="https://statistics.vercel.app/api?username=swapnilgupta14" />
+  <img height=200 align="center" src="https://statistics-henna.vercel.app/api?username=swapnilgupta14" />
 </a>
 <a href="https://github.com/anuraghazra/convoychat">
-  <img height=200 align="center" src="https://statistics.vercel.app/api/top-langs?username=swapnilgupta14&layout=compact&langs_count=8&card_width=320" />
+  <img height=200 align="center" src="https://statistics-henna.vercel.app/api/top-langs?username=swapnilgupta14&layout=compact&langs_count=8&card_width=320" />
 </a>
