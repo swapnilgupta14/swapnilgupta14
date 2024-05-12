@@ -17,3 +17,4 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python" height="40"/>  &nbsp;
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React" height="35"/>  &nbsp;
 </p>
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=swapnilgupta14&repo=statistics)](https://github.com/swapnilgupta14/statistics)
