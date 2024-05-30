@@ -23,7 +23,7 @@
 </p>
 
  <p align="center">
-  <img width="800" height="170" src="https://streak-stats.demolab.com?user=swapnilgupta14&theme=highcontrast&hide_border=true&border_radius=5&card_width=800">
+  <img width="800" height="170" src="https://streak-stats.demolab.com?user=swapnilgupta14&theme=transparent&hide_border=true&border_radius=5&card_width=800">
 </p>
 
 
@@ -33,8 +33,8 @@
 
 
 <p align="center">
-  <img width="510" height="170" src="https://github-readme-stats.vercel.app/api?username=swapnilgupta14&show_icons=true&theme=vision-friendly-dark">
-  <img width="280" height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=swapnilgupta14&size_weight=0.15&count_weight=0.5&layout=compact&theme=vision-friendly-dark">
+  <img width="510" height="170" src="https://github-readme-stats.vercel.app/api?username=swapnilgupta14&show_icons=true&theme=transparent">
+  <img width="280" height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=swapnilgupta14&size_weight=0.15&count_weight=0.5&layout=compact&theme=transparent">
 </p>
  
 
