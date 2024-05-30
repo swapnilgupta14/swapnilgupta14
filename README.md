@@ -1,5 +1,9 @@
 <h1 align="center">Hi, I'm Swapnil Gupta</h1>
 
+<div id="header" align="center">
+  <img src="https://komarev.com/ghpvc/?username=swapnilgupta14&style=for-the-badge&color=orange" alt=""/>
+</div>
+
 <p align="center">
   <a href="https://www.linkedin.com/in/swapnilgupta-ln/">Connect with me on LinkedIn</a> •
   <a href="mailto:mail.swapnilgupta@gmail.com">Mail Me</a>
@@ -36,12 +40,10 @@
 
 
 <p align="center">
-  <img width="600" height="200" src="https://github-readme-stats.vercel.app/api?username=swapnilgupta14&show_icons=true&theme=vision-friendly-dark">
-  <img width="400" height="200" src="https://github-readme-stats.vercel.app/api/top-langs/?username=swapnilgupta14&size_weight=0.15&count_weight=0.5&layout=compact&theme=vision-friendly-dark">
+  <img width="500" height="170" src="https://github-readme-stats.vercel.app/api?username=swapnilgupta14&show_icons=true&theme=vision-friendly-dark">
+  <img width="300" height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=swapnilgupta14&size_weight=0.15&count_weight=0.5&layout=compact&theme=vision-friendly-dark">
 </p>
  
 
 
-<div id="header" align="center">
-  <img src="https://komarev.com/ghpvc/?username=swapnilgupta14&style=for-the-badge&color=orange" alt=""/>
-</div>
+
