@@ -23,7 +23,7 @@
 </p>
 
  <p align="center">
-  <img width="800" height="170" src="https://streak-stats.demolab.com?user=swapnilgupta14&theme=transparent&hide_border=true&border_radius=5&card_width=800">
+  <img width="800" height="200" src="https://streak-stats.demolab.com?user=swapnilgupta14&theme=transparent&hide_border=true&border_radius=5&card_width=800">
 </p>
 
 
