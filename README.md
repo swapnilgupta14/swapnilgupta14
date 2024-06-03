@@ -7,6 +7,7 @@
 <p align="center">
   <a href="https://www.linkedin.com/in/swapnilgupta-ln/">Connect with me on LinkedIn</a> •
   <a href="mailto:mail.swapnilgupta@gmail.com">Mail Me</a>
+  <p>Frontend | Backend | Machine Learning | Mathematics | Web3</p>
 </p>
 
 <h3 align="center">Languages and Tools:</h3>
