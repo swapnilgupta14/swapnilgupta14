@@ -5,7 +5,7 @@
 </div>
 </br>
 <p align="center">
-  <a href="https://swapnil-next.vercel.app/"><span style={{margin: "20px 0px"}}>Personal Website: swapnil-next.vercel.app </span></a> <br/>
+  <a href="https://swapnil-next.vercel.app/"><span style={{margin: "20px 0px"}}><b>swapnil-next.vercel.app </b></span></a> <br/> <br/>
   <a href="https://www.linkedin.com/in/swapnilgupta-ln/">Connect with me on LinkedIn</a> •
   <a href="mailto:mail.swapnilgupta@gmail.com">Mail Me</a>
 </p>
