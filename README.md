@@ -12,6 +12,10 @@
 
 <p align="center">Frontend | Backend | Machine Learning | Mathematics | Web3</p>
 
+  <div align="center">
+        <a href="https://github.com/swapnilgupta14"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=18&pause=999&color=B4F7F4&center=true&vCenter=true&random=false&width=435&lines=I'm+Full+Stack+Developer;I'm+Web3+Learner;I'm+Machine+Learning+Enthusiast;and+UI%2FUX+designer" alt="Typing SVG" /></a>
+    </div>
+
 
 <h3 align="center">Languages and Tools:</h3>
 
