@@ -10,7 +10,9 @@
   <a href="mailto:mail.swapnilgupta@gmail.com">Mail Me</a>
 </p>
 
+<!--
 <p align="center">Frontend | Backend | Machine Learning | Mathematics | Web3</p>
+-->
 
   <div align="center">
         <a href="https://github.com/swapnilgupta14"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=18&pause=999&color=B4F7F4&center=true&vCenter=true&random=false&width=435&lines=I'm+Full+Stack+Developer;I'm+Web3+Learner;I'm+Machine+Learning+Enthusiast;and+UI%2FUX+designer" alt="Typing SVG" /></a>
@@ -40,7 +42,7 @@
 </p>
 -->
 
-
+<br/>
 <p align="center">
   <img width="510" height="170" src="https://github-readme-stats.vercel.app/api?username=swapnilgupta14&show_icons=true&theme=transparent">
   <img style={{marginRight : '20px'}} width="280" height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=swapnilgupta14&size_weight=0.15&count_weight=0.5&layout=compact&theme=transparent">
