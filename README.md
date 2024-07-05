@@ -48,7 +48,7 @@
   <img src="https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white"/>
   <img src="https://img.shields.io/badge/Spyder%20Ide-FF0000?style=for-the-badge&logo=spyder%20ide&logoColor=white"/>
   <img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white"/>
-</p>
+</p><br/>
 
 <p align="center">
   <img width="510" height="170" src="https://github-readme-stats.vercel.app/api?username=swapnilgupta14&show_icons=true&theme=transparent"/>
