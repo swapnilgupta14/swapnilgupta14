@@ -59,4 +59,4 @@
   <img width="800" height="200" src="https://streak-stats.demolab.com?user=swapnilgupta14&theme=transparent&hide_border=true&border_radius=5&card_width=800"/>
 </p>
 
-[![Readme Card](https://swapnil-github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats)](https://github.com/anuraghazra/github-readme-stats)
+<!-- [![Readme Card](https://swapnil-github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats)](https://github.com/anuraghazra/github-readme-stats) -->
