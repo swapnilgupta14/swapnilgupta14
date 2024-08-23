@@ -4,14 +4,18 @@
 <h1 align="center">Hi, I'm Swapnil Gupta</h1>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=swapnilgupta14&style=for-the-badge&color=orange" alt="Profile views"/>
-</p>
-
-<p align="center">
   <a href="https://swapnil-next.vercel.app/"><b>swapnil-next.vercel.app</b></a> • 
   <a href="https://www.linkedin.com/in/swapnilgupta-ln/">Connect with me on LinkedIn</a> • 
   <a href="mailto:mail.swapnilgupta@gmail.com">Mail Me</a>
 </p>
+
+<table align="center">
+  <tr>
+      <td><a href="https://github.com/swapnilgupta14"><img src="https://img.shields.io/github/followers/swapnilgupta14.svg?label=GitHub&style=social" alt="GitHub"></a></td>
+    <td><a href="https://www.linkedin.com/in/swapnilgupta-ln/"><img src="https://img.shields.io/badge/LinkedIn--_.svg?style=social&logo=linkedin" alt="LinkedIn"></a></td>
+    <td><a href="mail.swapnilgupta@gmail.com"><img src="https://img.shields.io/badge/Gmail--_.svg?style=social&logo=gmail" alt="Gmail"></a></td>
+  </tr>
+</table> 
 
 <p align="center">
   <a href="https://github.com/swapnilgupta14">
@@ -57,6 +61,11 @@
 
 <p align="center">
   <img width="800" height="200" src="https://streak-stats.demolab.com?user=swapnilgupta14&theme=transparent&hide_border=true&border_radius=5&card_width=800"/>
+</p>
+
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=swapnilgupta14&style=for-the-badge&color=orange" alt="Profile views"/>
 </p>
 
 <!-- [![Readme Card](https://swapnil-github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats)](https://github.com/anuraghazra/github-readme-stats) -->
