@@ -1,15 +1,9 @@
 [![MasterHead](https://user-images.githubusercontent.com/74038190/240304586-d48893bd-0757-481c-8d7e-ba3e163feae7.png)](https://github.com/raj-pandey55)
 <br/>
 
-<h1 align="center">Hi, I'm Swapnil Gupta</h1>
-
-<p align="center">
-  <a href="https://swapnil-next.vercel.app/" style ={{margin: "10px"}}><b>Checkout my Portfolio</b></a>
-</p>
-
 <p align="center">
   <a href="https://github.com/swapnilgupta14">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=18&pause=999&color=B4F7F4&center=true&vCenter=true&width=435&lines=I'm+Full+Stack+Developer;I'm+Web3+Learner;I'm+Machine+Learning+Enthusiast;and+UI%2FUX+designer" alt="Typing SVG"/>
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=18&pause=999&color=B4F7F4&center=true&vCenter=true&width=435&lines=Full+Stack+Developer;Web3;Design:+Product+/Software" alt="Typing SVG"/>
   </a>
 </p>
 
