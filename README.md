@@ -4,9 +4,15 @@
 </p>
 
 <!-- Typing Intro -->
-<p align="center" style="margin-bottom: -10px;">
+<!-- <p align="center" style="margin-bottom: -10px;">
   <a href="https://github.com/swapnilgupta14">
     <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=18&pause=999&color=B4F7F4&center=true&vCenter=true&width=435&lines=Full+Stack+Developer;Web3;Design:+Product+/Software"/>
+  </a>
+</p> -->
+
+<p align="center">
+  <a href="https://github.com/swapnilgupta14">
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=500&size=22&duration=1800&pause=700&color=00E7FF&center=true&vCenter=true&width=520&cursor=%E2%96%8C&lines=Full+Stack+Developer;React+%2F+Next.js+Engineer;Product+%26+Software+Design;Web3+Enthusiast" />
   </a>
 </p>
 
@@ -67,3 +73,4 @@
     </td>
   </tr>
 </table>
+
