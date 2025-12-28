@@ -3,6 +3,15 @@
   <img src="https://user-images.githubusercontent.com/74038190/240304586-d48893bd-0757-481c-8d7e-ba3e163feae7.png" />
 </p>
 
+<!-- Snake -->
+<div align="center" style="margin-bottom: 25px;">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Swappy-cmd/Swappy-cmd/blob/output/github-snake-dark.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/Swappy-cmd/Swappy-cmd/blob/output/github-snake.svg"/> 
+    <img alt="github-snake" src="https://github.com/Swappy-cmd/Swappy-cmd/blob/output/github-snake-dark.svg"/>
+  </picture>
+</div>
+
 <!-- Typing Intro -->
 <!-- <p align="center" style="margin-bottom: -10px;">
   <a href="https://github.com/swapnilgupta14">
@@ -37,15 +46,6 @@
   <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
   <img src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
   <img src="https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white" />
-</div>
-
-<!-- Snake -->
-<div align="center" style="margin-bottom: 25px;">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Swappy-cmd/Swappy-cmd/blob/output/github-snake-dark.svg"/>
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/Swappy-cmd/Swappy-cmd/blob/output/github-snake.svg"/> 
-    <img alt="github-snake" src="https://github.com/Swappy-cmd/Swappy-cmd/blob/output/github-snake-dark.svg"/>
-  </picture>
 </div>
 
 <br/>
