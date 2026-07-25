@@ -37,18 +37,14 @@
 <!-- Github Stats -->
 
 <p align="center">
-  <img height="165" src="https://swapnil-github-readme-stats.vercel.app/api?username=swapnilgupta14&show_icons=true&hide_border=true&theme=transparent" alt="stats" />
-  <img height="165" src="https://swapnil-github-readme-stats.vercel.app/api/top-langs/?username=swapnilgupta14&langs_count=8&size_weight=0.15&count_weight=0.5&layout=compact&hide_border=true&theme=transparent" alt="top languages" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-streak-stats-seven-sepia.vercel.app?user=swapnilgupta14&theme=transparent&hide_border=true&short_numbers=true" alt="streak" />
+  <img height="160" src="https://swapnil-github-readme-stats.vercel.app/api?username=swapnilgupta14&show_icons=true&hide_border=true&theme=transparent" alt="stats" />
+  <img height="160" src="https://swapnil-github-readme-stats.vercel.app/api/top-langs/?username=swapnilgupta14&langs_count=8&size_weight=0.15&count_weight=0.5&layout=compact&hide_border=true&theme=transparent" alt="top languages" />
+  <img height="160" src="https://github-readme-streak-stats-seven-sepia.vercel.app?user=swapnilgupta14&theme=transparent&hide_border=true&short_numbers=true" alt="streak" />
 </p>
 
 <p align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=swapnilgupta14&theme=github-compact&hide_border=true&area=true" alt="activity graph" />
 </p>
-
 
 <br/>
 
