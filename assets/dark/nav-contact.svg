@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="116" height="34" viewBox="0 0 116 34" fill="none">
+<style>@font-face{font-family:'GM5';src:url(data:font/woff2;base64,d09GMgABAAAAAAPkAA8AAAAAB3gAAAOMAAGzdQAAAAAAAAAAAAAAAAAAAAAAAAAAGhYbIBwqBmA/U1RBVEQAXBEICoQ0g2oBNgIkAxQLEgAEIAWEGAcgGxcGIC4HeDKMlxHa+tAIpzaCVy2ER5g2/6fF8w+Hv3Pfn6NoLQ/DtXRSvjzMIwgky7xE/8/rVe8vxAyVAbjrTGazzArqrlMFl1ddB7BobZ6vXW9rfNkTywPgwDrD+10QqLios8fJ9eU/PGfF1v5xP/nHAnDnlYJDfMvAiMQNd6P0GXaIDnTaQEXRQDKbazswfVU0sEOr/FGCIaBEtEQw1jcEOfOE6iFBExagYNU97Z2eHIYsCUCu1awI+gax1FfgB3BbO+cZ8LICVKDHROOvPSxnCC6BXP18/wPQPEL7AAK1HHUD2BInoquwLAp7oj56eicR8HLoQcQBpGkKQVbRNwANUeECIKDQwLJowbIYV8BYV2k7oGbnVKU+6EIrD5HPE5dczIDgWiMLGtEFU2CAbxCA5k9AqlZDOjFlKRkZCTHnh3KSW5Obk1qaSDKVoPdfvEC+fJn8c6L+xYuknj2D1fc8+Zck8exZMsnN7NjkmKQWXgxZ9ZwFhyqM6pfIrLUhCaVDv0n2EJ0EXTIchUkefS65gzzoVBJuTIXhHffIw7t57oKH13ev5qFTkRKJu1DeBsiUdni6wXxyfGKbeZoK05srOeNDsWn+QEipcltZcxGSNesuptJW1KVUD8Zkzm3tgOuuTmW39pSsnDYQNTFJ5KtmFRQsbYownZydFpBe9TTuMrLmKIo17zLhOADiMHvOZYRfHY86EoQZFnb6j6oY4dbJyrEG48nxibQxqrJqlAJ5YrzWaEMlLbHYmHMECXAtErFVyCQBWE0QtLcXN1GBwbhut0Zn9Ye8Usx5XshzcR8PI8mBnQ5xybfK/7wwd7dZO+T1mkeGzQD4hJCfKezh7MHWdNP3hOjoV4C/yDkSgP9PCqAgD1vUC6CtQFjqpnoikBVIEnMtVvkGuFwEmwsbn5wOQte+aBAYN/AlWpqJwDcIabHsFK2M/dIaDt2iNe0V0FpWik1t2ykLDwLDtCHFhEGEQ5hdBheSsglOI0bNGdenR69JGJwcTgVTr1cXjFeXPhPSrNq4Ef26dHRZ7KbcZr1GjJuA4Q80bNKoCQYyMj36SItPaSfVYcQQmWldxnXoMtiUk7ST6DZi2CRpcqHgEbQVBNiR2mP1mDKINk5BSktOziisllOIMVVZi0iQf/BiWLOFdb2eto9ixKarVDEFQio+LgD0fnbqM2WI3yTaoD4dao0YQhsWDSyCLx0A) format('woff2');font-style:normal;font-weight:500}
+.mono-m{font-family:'GM5','SF Mono',Menlo,Consolas,monospace;font-style:normal;font-weight:500}
+.rise{animation:rise 1s cubic-bezier(.16,1,.3,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}}
+.fade{animation:fade 1.1s ease both}
+@keyframes fade{from{opacity:0}}
+.grow{transform-box:fill-box;transform-origin:0 50%;animation:grow 1.4s cubic-bezier(.65,0,.35,1) both}
+@keyframes grow{from{transform:scaleX(0)}}
+.draw{stroke-dasharray:1 1;animation:draw 1.6s cubic-bezier(.65,0,.35,1) both}
+@keyframes draw{from{stroke-dashoffset:1}}
+.pulse{transform-box:fill-box;transform-origin:50% 50%;animation:pulse 2.4s cubic-bezier(.2,.6,.4,1) infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.6}70%,100%{transform:scale(3.4);opacity:0}}
+.blink{animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.nudge{animation:nudge 3s ease-in-out infinite}
+@keyframes nudge{0%,50%,100%{transform:translate(0,0)}25%{transform:translate(2px,-2px)}}
+.roll{animation:roll 1.8s cubic-bezier(.16,1,.3,1) both}
+@keyframes roll{from{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+
+<g class="fade">
+<rect x=".5" y=".5" width="107" height="33" rx="16.5" fill="#FFFFFF" fill-opacity="0.025" stroke="#FFFFFF" stroke-opacity="0.13"/>
+<text x="16" y="21" class="mono-m" font-size="11" letter-spacing="1.4" fill="#FF7A45">05</text>
+<text x="38" y="21" class="mono-m" font-size="11" letter-spacing="1.4" fill="#A8A49F">CONTACT</text>
+</g>
+</svg>
