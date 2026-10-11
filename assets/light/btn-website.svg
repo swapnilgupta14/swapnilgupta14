@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="148.41" height="46" viewBox="0 0 148.41 46" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="132.98" height="40" viewBox="0 0 132.98 40" fill="none">
 <style>@font-face{font-family:'G4';src:url(data:font/woff2;base64,d09GMgABAAAAAAJMAA4AAAAABNQAAAH2AAHMzQAAAAAAAAAAAAAAAAAAAAAAAAAAGyAcKgZgP1NUQVRIADQRCAo4SgE2AiQDCAsGAAQgBYNUByAb7QMILgbsxuUiGM5Fa7Yx2mOw37GL/pN4iN/v25l5d1XSJrGq0QzLsAmVTCNq2opmEtUzCW+ukQh/aU1zRRLqZBkU00g+cn6gTfWcmh5jwPUAuMv5zzmQIanw/3tLd+IEP45kKlv1PILjxijTBLqJbkvzwKJLPaVUd4bYETG5+jy7nUC7Zq0gVtYOD4gpUINGsz5zch+aUBADY7jkamyqIy/mBrCdq8Ru7cwB0S+2c/MD/HpP1p//L0BZiHoEZHc+QL+EEBolegUwLHD6iIwEvy4TkFFE0SuIlLFJ3kclZIwBBEhUOE7wcEg/UBTBwKEdvlUREKJGB0KCgkQzugAogKwvB6rWXfsCJ49c+X/hzq3T8el2N332/NKZHSwgiIePzv67GdvTMfM3VvUdvnT4DsDXPxXVfHQhTwH1EgRb5fKUmloXbA1eMjcUpUsIUrMEAcaanREUpQnXuUFodh1SuxtQGfeEos8fqhOB61mfFLTGNB7lC1OMScQOcxbbD5dCIkNUW1NbF/UgE1BrAoVXR71wWVQCDqKmfEhmcXmoIhlCNs9YQ4NEgWQ+Vh3HYmj4JHBxBLoGKXS2RmQxoVL+iTcCiU/HcLXUDTU1Tby6mTuYWGW10YIKxa/YdZS0SwWKPkVverUf2kIMnYJzYzEwTEGgtkkAAAAA) format('woff2');font-style:normal;font-weight:400}
 @font-face{font-family:'G5';src:url(data:font/woff2;base64,d09GMgABAAAAAAR4AA8AAAAACDgAAAQdAAHMzQAAAAAAAAAAAAAAAAAAAAAAAAAAGjYbgT4cVgZgP1NUQVREAFQRCAqEJINSATYCJAMoCxYABCAFg2wHIBvJBiMRJnRyIcBfJfBgiP5Rh6hq2FQBjnAuoVSbZhej6q2KSnyGjQxfcbi3BJH/kCOI1sKqeyeARDYy/Kj/hSFQgJoVEN2UXe49tIFxDyCkq0y6uJUqGJWaCvk/OhAADfCvCrgDFQsW///3Tt9rb+98bIt0Qpqb6p40isJ0UWRpQGNPkCgt7CQSIGTTZnoq+CHFMjo0+nQhgcboiRDqC/IRYaobahxH5eHjmEBbTTUU+opDe04eNVCZPXfxav131Z08rP++8j2H9D+cdvqo/lJ9oSMCBWo1gTRewXxbFXWo/Q54ty8Lfy/8ug/4sgc+5D1qP/vJrz6WUiioq76yxkEJAlSqiLISsjgV5Q5QR4PDB/bt0FX6Oq9a3FmhtsSNhaF1qPnqfTHGPqGe+lI9JVfEr3XImxmLRe1SYquRMY0yDj+6duWsxV6xzunqu//fp0yPugjI1vkqumt4l71bS/SW5/btPx34zYcZfZ+taC4gOsevVEJGPxAgUaG1SqC1Yjoaqy8V6+y0xwGna/CgU+/1JhtvpCEBECLf18wybAhaM+gW3kVHtEZiKTkhRLtbk1ZN29crQxqXEgYmw6SUy2USKcmJaf1PPpEUPAQLz/CPj2APD9EDz4gnShcPYI+XSYknxPMZpiVmI3ZtG1UhXvuJkg9wELcpHGLGblPOEdNnKo9nr5d1L28dOTy/Rum/AJs6ZbrSdsEetHtCqhsj7SEE2Yg2SEEg+Fw/rOhDtbv4SOtFqzYOmzvwZWwQAdmR6EFMSMZR/v/McPo4ZZacdTkqirWz5FEJwnnpMTFrCYb82ofzJ9hH/HGGwaVywZXISMHlEkWgpkhm/z1xllexQf5BEt8PV4vqGvnVx/+odHAqlZw9QaMCAUYHjbSDQdneY0IZh3ENQ2JaiGNrc5pbkE6022Qvv6KEXL8kdFhIUCGe1EfzZz9Gu+7tp7S8F6q1qf9iz0WVK7RbrJ6zMA7+5fxrHxgz74UYzToDtucfPaj0VQd1Neim9FUP9dSLWdS/jgV4Os+NJF/MwXMSgXj7nf8bf760TXfyb6SqL+GzJ7Mj4PMfPxnQt/Zr5znqShC8y5Hq9Qy039ozUyUb5nr90SG3W5TTDQwWBBt30H7YyPzISD4TaGiI1F0R4EsMauSmSpQGeBwQoaHHidTUE0RluKeIoqPPUR1uwHUpHVWCxjEad6ZOx32pi+/bT8M4EysvKa0rz8vJrbSjoTSGXWRulp36i7KhVmh5SX5Whg+kVW3ILYl5KiB0y4XKUgKer47n5GXNXpXuk1FS5FudVZ6RVcjOWV71zi4prnSf+xfDs3KqCtPKqT4cFOVHh8sD+T0KebMrasoOR+NyX968UbvR8x0RxbiemCeoQGYeQ5GfD9IKSSsjvKToS8VYaJSmAAAAAA==) format('woff2');font-style:normal;font-weight:500}
 .sans{font-family:'G4',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-style:normal;font-weight:400}
@@ -23,11 +23,11 @@
 </style>
 
 <g class="fade">
-<rect x=".5" y=".5" width="137.41" height="45" rx="22.5" fill="#000000" fill-opacity="0.018" stroke="#000000" stroke-opacity="0.13"/>
-<g transform="translate(18 15)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="7" stroke="#57534E"/><ellipse cx="8" cy="8" rx="3" ry="7" stroke="#57534E"/><path d="M1 8h14" stroke="#57534E"/></g>
-<text x="44" y="28.5" class="sans-m" font-size="15" fill="#1A1918">Website</text>
+<rect x=".5" y=".5" width="123.98" height="39" rx="19.5" fill="#000000" fill-opacity="0.018" stroke="#000000" stroke-opacity="0.13"/>
+<g transform="translate(16 13) scale(.875)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="7" stroke="#57534E"/><ellipse cx="8" cy="8" rx="3" ry="7" stroke="#57534E"/><path d="M1 8h14" stroke="#57534E"/></g>
+<text x="39" y="25" class="sans-m" font-size="14" fill="#1A1918">Website</text>
 <g class="nudge">
-<text x="111.09" y="28.5" class="sans" font-size="15" fill="#C2410C">&#8599;</text>
+<text x="100.28" y="25" class="sans" font-size="14" fill="#C2410C">&#8599;</text>
 </g>
 </g>
 </svg>

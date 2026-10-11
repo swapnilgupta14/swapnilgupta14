@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="840" height="326" viewBox="0 0 840 326" fill="none">
-<style>@font-face{font-family:'GM4';src:url(data:font/woff2;base64,d09GMgABAAAAAATIAA8AAAAACQAAAARuAAGzdQAAAAAAAAAAAAAAAAAAAAAAAAAAGhYbIBwqBmA/U1RBVEgAdBEICocYhWABNgIkAyQLIgAEIAWEAAcgGyEHIJ4DbtM84qHiIR4eklS8E1KtGNoYQf1+Zc/7fw8YZJDZHbjUGRvw4FKxt8KFyieaZbIHdtnsIdrAPMLxJg+xhVXSndx99UPnuumAJjiiTsCJjCbU8V0Yxd//AO6c/7ifuijBxokPNfov3iIapBs9itYgpbvxxCNxNhBKB2PzH+tflEANIAmhVgjUqVIDYrNMY4EcOZQEgk3DC28HsTEolQPgVnlyIFsVSHMDD4BdanCcBVKsBSmgUmENf/noQbEG7hrgzP7+/5GvR9YjIDWlIgZkCaFCQgscRuCexRMYAtx4HMwgHRC5FngkKbaSPiATUnQCBEjI0AIv0ILgPNCiGF5uAJeIlJKGhY2zJAZwCUnIaZgWDtPdbaytLIyN9AW6mxAl1SM0AAwALSCqQTwDADkgySQhM4coSywnlFZWorn5XQ355VWVCyoqcgkE1I9683weu73AihLRDR/BzPNZFV2OBPjoHPkzNPsJFlAujCcrjk57CqBG47gw9+btVZ8/QDhiGULVHBjMUHZs8RmuChSXZ+vYOwvVhcHMvNrVWTUhD8+tWZeqEZSYhxRAVY7CMoqgcEGwuE3AEasw7D59MzocXnJOZj5q33d0xz5m346r3pwd2S0NYKYYSl9fc6i2kIcUnWQ2H+rN86OeArwLdbpRB86NFMD5xtH1ef6xMJy+NEcEiu/3HiqkSwVX8fJkNu7q75Gqu0hZa4/3DKopniXJyfXmjVoFm8ZU81UbLbMqMZNK40rV7Ja9ik+vNal2T02pdq0lPUazNjG1eo1jr01owVWsD7u+Yibdd8sCPfW7MJP44Pxp3qEnLrMwwhTHCkVOYvEGnZlP14q6l5529yzRiZhkBaXHV3/84P9r+/FHnr1A92n6gVM86jy3sRFtXbQ3XgXD4XONbw5fVe8IIkVu9wmXAVnxe3/ZRJg0oJH3mdgyvIxN3FTy8Gjx3YHnGwd39j1crtKKuDytULUcltbvmuZKM0S5kxgZVKo6SCRxdXNb64fDvaZKZbmL1K2gchiuJEmpjLM40WyBk+jqEAk7hkVaHrnlwY5mUamtKsbuN7IZXNvoECAP3zM5lvc2/HvNn761CTEiJUdIQ19fXNyndm1Db70h+lu6q7orT+z2ATD9TyDePdHG52r8RZy/FRn+B3w7ftwOwPcf/0m1pR9pbfqEMgkEPz+k4wCSWs7G7BJO8c9Chrj8k+jEYRAh069bo25gPwQNRuBBYKOqTMGLPBd4DQwZocVhRlLnPSOz3D1GbiQwCrpihF5mKNYyIaAmAugOfGY1nfJiLoiNmzDPlKS4BEwzkmEkFM0sk+ioQy4Kgkwrh8GUbZDCkbDajNAMTMK4KdOadUvAYCZMYxkyJC4JWnxGyKCwcaOGzIqaEhaV0YKT9BsQM24MZnBzdc8lIFqAY5wJu3bcjIygKSMG0Q0bxmZjIqbBVgJVY4DmP3itZm22id4ekoQomk/X7Mgp0HbBw31cJUxQRlKYybhRQWPwQGkt/EQAAAAA) format('woff2');font-style:normal;font-weight:400}
-@font-face{font-family:'GM5';src:url(data:font/woff2;base64,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) format('woff2');font-style:normal;font-weight:500}
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="840" height="290" viewBox="0 0 840 290" fill="none">
+<style>@font-face{font-family:'GM5';src:url(data:font/woff2;base64,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) format('woff2');font-style:normal;font-weight:500}
 @font-face{font-family:'G4';src:url(data:font/woff2;base64,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) format('woff2');font-style:normal;font-weight:400}
-.mono{font-family:'GM4','SF Mono',Menlo,Consolas,monospace;font-style:normal;font-weight:400}
+@font-face{font-family:'G5';src:url(data:font/woff2;base64,d09GMgABAAAAAASAAA8AAAAACBwAAAQnAAHMzQAAAAAAAAAAAAAAAAAAAAAAAAAAGjAbgV4cVgZgP1NUQVREAFQRCAqEBINTATYCJAMcCxAABCAFg2wHIBvYBlGUUc4TCH4m2HT6FlKEEXZyUGzXwiFrZ7TMKCn4xOLNJyL+YY0276+emGYDMsmjR/FUCZ3L1Kyl7gGedqlGIeuYOXgoJdLsAbnZCyAIDvX+E8BgOMITKOG5cKwCFb1gLVhFq/0G+Id2/fenal7mEPiYDVYq8lw0tk9dk0pUrlj4X0kC1KtVbIFpQKXmjUiaQkYdrczhPB+hBPPYB0qJTvR6pRfzInrRShgh2ORsVlxCTp8ZAyQSDB9hOMSv+jA6iN8xci3En2nWAPF4RmVdLBAsA/GOAPEFTP8F5S0BPmAJ9Uzf6htSjzFrHmO9ZPpRP5n+d6aLne1bXe4C06f6yPS97grRiqZOSRE9E0MUGq1WRI+KpZ+wPUli13f+rqQhGK8YKGYEEvRitVHzs3WIZaVicorRwSydNpvzRUd9Zgfgea63ZCo9Srj4+GNej1AMDsMY23j7fxO03YiAQLXyJI7ZixgV1vFwjnf/qmIR4PuF1iHREK1lCKQdX9CIihiAgEKDdXzBOoGHwLxRab1Ak9JiK+DTWkta3JymiNIo9d8S8A9gkclP/MYwD8IRJaLqf2latGOwo6OAHstxJLXEanUY134oQzZyJMdxyJD2dodxViuBLzzK2Y+9DoM3WAmr1QqDr18nxp4NKWrI1YPO+UDyYh5g8AwHB5i+vM+f3Rqv+Zevk+PKAwiCb98Pgw/QY5O7YfjSmuA2I4jFI9BB6MDr7IB3tCdxcBrLIfv64DUzyisQJyBciP5FVXphtUFEJ1TUhmcll3oHhQVfbIqud8c95WmJtTlF+V30GfXNTEG50qbcIKweiIanFVfmpgSfrg2qcO3sqStMas4sKe1iSYP7Dq2SOrG4BSNdd4YXz8/LmL9OJ3Ju7Nm5u87EqC55XHTxwEubHcOFTMJyRtwUHNSaikZGlcWHzwv6oQgOfwJRDpgZLRqA40X9zRVYmSyxmJhgEFrQ7Ay0VkJRtRI0A83tYxCOL+4oS4O6k5o970QjL91vz+i7/ONEOhF8sCpxLaL5GfU7DKOq9lPVlEog6BBi0AUKCm5AfeWUD0CQ75+bTVRpd5fCv5HPfwH/1ihaAfj/4XEcxNeHPJAcegXCj67Vb4jnlng+dEFDdhCbEz3ILPGZ0Z20upjrJu+8BsHgBs8xgXD3lWDOD4007YA7EIpZd6gs+oUaV3ai1q5nRKcEQE/7mxAwH5kQyJRCNIOFIYZ9dIAyMumDoaakwgqVLlW6TKFwKnKhqsipWbBCNWEYachJMYYybVgqRgyLULFpLZYJruZLkUJJHcRvI5FMykgvRU9yDCk5nWVIrSSKcm3AiuO/Yws5pTY6NEaaZLlSpSpAaoHCFDxdSLL9QKxQIIEpqtmNUIRzU4HKfNqPqycno9ZGrwaLpqMm1cJIj2bAB6b5bjgA) format('woff2');font-style:normal;font-weight:500}
 .mono-m{font-family:'GM5','SF Mono',Menlo,Consolas,monospace;font-style:normal;font-weight:500}
 .sans{font-family:'G4',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-style:normal;font-weight:400}
+.sans-m{font-family:'G5',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-style:normal;font-weight:500}
 .rise{animation:rise 1s cubic-bezier(.16,1,.3,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}}
 .fade{animation:fade 1.1s ease both}
@@ -25,84 +25,86 @@
 </style>
 
 <g class="rise">
-<text x="0" y="20" class="mono-m" font-size="11" letter-spacing="1.6" fill="#C2410C">02</text>
-<text x="26.4" y="20" class="mono-m" font-size="11" letter-spacing="1.6" fill="#78736D">STACK</text>
-<text x="676.2" y="20" class="mono" font-size="10.5" letter-spacing="1.2" fill="#78736D">BRIGHT = DAILY DRIVERS</text>
+<text x="0" y="22" class="mono-m" font-size="14" letter-spacing="0.5" fill="#C2410C">02</text>
+<text x="27.8" y="22" class="sans-m" font-size="16" letter-spacing="-0.1" fill="#1A1918">Stack</text>
+<text x="656.4" y="22" class="mono-m" font-size="12" letter-spacing="1.2" fill="#78736D">BRIGHT = DAILY DRIVERS</text>
 </g>
-<rect x="83.4" y="16" width="577.6" height="1" fill="#000000" fill-opacity="0.07" class="grow" style="animation-delay:0.15s"/>
+<rect x="87.33" y="17" width="551.87" height="1" fill="#000000" fill-opacity="0.07" class="grow" style="animation-delay:0.15s"/>
 <g class="rise" style="animation-delay:0.1s">
-<text x="0" y="72" class="mono-m" font-size="10.5" letter-spacing="1.6" fill="#78736D">LANGUAGES</text>
-<text x="168" y="73" class="sans" font-size="16.5" fill="#1A1918">TypeScript</text>
-<text x="257.97" y="73" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="274.89" y="73" class="sans" font-size="16.5" fill="#1A1918">JavaScript</text>
-<text x="365.31" y="73" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="382.23" y="73" class="sans" font-size="16.5" fill="#78736D">Python</text>
-<text x="444.56" y="73" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="461.48" y="73" class="sans" font-size="16.5" fill="#78736D">C++</text>
-<text x="500.49" y="73" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="517.41" y="73" class="sans" font-size="16.5" fill="#78736D">SQL</text>
+<text x="0" y="70" class="mono-m" font-size="12" letter-spacing="1.2" fill="#78736D">LANGUAGES</text>
+<text x="216" y="70" class="sans" font-size="14" fill="#1A1918">TypeScript</text>
+<text x="292.7" y="70" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="307.42" y="70" class="sans" font-size="14" fill="#1A1918">Python</text>
+<text x="360.67" y="70" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="375.39" y="70" class="sans" font-size="14" fill="#1A1918">JavaScript</text>
+<text x="452.48" y="70" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="467.2" y="70" class="sans" font-size="14" fill="#78736D">C++</text>
+<text x="500.66" y="70" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="515.38" y="70" class="sans" font-size="14" fill="#78736D">SQL</text>
 </g>
-<rect x="0" y="93" width="840" height="1" fill="#000000" fill-opacity="0.07" class="grow" style="animation-delay:0.2s"/>
+<rect x="0" y="87" width="840" height="1" fill="#000000" fill-opacity="0.07" class="grow" style="animation-delay:0.2s"/>
 <g class="rise" style="animation-delay:0.17s">
-<text x="0" y="118" class="mono-m" font-size="10.5" letter-spacing="1.6" fill="#78736D">FRONTEND</text>
-<text x="168" y="119" class="sans" font-size="16.5" fill="#1A1918">React</text>
-<text x="221.19" y="119" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="238.11" y="119" class="sans" font-size="16.5" fill="#1A1918">Next.js</text>
-<text x="299.48" y="119" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="316.4" y="119" class="sans" font-size="16.5" fill="#1A1918">Tailwind CSS</text>
-<text x="423.71" y="119" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="440.63" y="119" class="sans" font-size="16.5" fill="#78736D">Redux Toolkit</text>
-<text x="551.58" y="119" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="568.5" y="119" class="sans" font-size="16.5" fill="#78736D">SCSS</text>
-<text x="620.78" y="119" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="637.7" y="119" class="sans" font-size="16.5" fill="#78736D">GSAP</text>
-<text x="689.73" y="119" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="706.65" y="119" class="sans" font-size="16.5" fill="#78736D">Framer Motion</text>
+<text x="0" y="110" class="mono-m" font-size="12" letter-spacing="1.2" fill="#78736D">FRONTEND</text>
+<text x="216" y="110" class="sans" font-size="14" fill="#1A1918">React</text>
+<text x="261.49" y="110" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="276.21" y="110" class="sans" font-size="14" fill="#1A1918">Next.js</text>
+<text x="328.65" y="110" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="343.37" y="110" class="sans" font-size="14" fill="#1A1918">Tailwind CSS</text>
+<text x="434.78" y="110" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="449.5" y="110" class="sans" font-size="14" fill="#78736D">Redux Toolkit</text>
+<text x="544.01" y="110" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="558.73" y="110" class="sans" font-size="14" fill="#78736D">SCSS</text>
+<text x="603.45" y="110" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="618.17" y="110" class="sans" font-size="14" fill="#78736D">GSAP</text>
+<text x="662.68" y="110" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="677.4" y="110" class="sans" font-size="14" fill="#78736D">Framer Motion</text>
 </g>
-<rect x="0" y="139" width="840" height="1" fill="#000000" fill-opacity="0.07" class="grow" style="animation-delay:0.27s"/>
+<rect x="0" y="127" width="840" height="1" fill="#000000" fill-opacity="0.07" class="grow" style="animation-delay:0.27s"/>
 <g class="rise" style="animation-delay:0.24s">
-<text x="0" y="164" class="mono-m" font-size="10.5" letter-spacing="1.6" fill="#78736D">MOBILE</text>
-<text x="168" y="165" class="sans" font-size="16.5" fill="#1A1918">React Native</text>
-<text x="273.41" y="165" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="290.33" y="165" class="sans" font-size="16.5" fill="#1A1918">Expo</text>
-<text x="336.85" y="165" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="353.77" y="165" class="sans" font-size="16.5" fill="#78736D">NativeWind</text>
+<text x="0" y="150" class="mono-m" font-size="12" letter-spacing="1.2" fill="#78736D">BACKEND</text>
+<text x="216" y="150" class="sans" font-size="14" fill="#1A1918">Node.js</text>
+<text x="271.92" y="150" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="286.64" y="150" class="sans" font-size="14" fill="#1A1918">FastAPI</text>
+<text x="344.41" y="150" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="359.13" y="150" class="sans" font-size="14" fill="#78736D">Express</text>
+<text x="417.83" y="150" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="432.55" y="150" class="sans" font-size="14" fill="#78736D">MySQL</text>
 </g>
-<rect x="0" y="185" width="840" height="1" fill="#000000" fill-opacity="0.07" class="grow" style="animation-delay:0.34s"/>
+<rect x="0" y="167" width="840" height="1" fill="#000000" fill-opacity="0.07" class="grow" style="animation-delay:0.34s"/>
 <g class="rise" style="animation-delay:0.31s">
-<text x="0" y="210" class="mono-m" font-size="10.5" letter-spacing="1.6" fill="#78736D">BACKEND</text>
-<text x="168" y="211" class="sans" font-size="16.5" fill="#1A1918">Node.js</text>
-<text x="233.48" y="211" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="250.4" y="211" class="sans" font-size="16.5" fill="#78736D">Express</text>
-<text x="319.15" y="211" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="336.07" y="211" class="sans" font-size="16.5" fill="#78736D">FastAPI</text>
-<text x="403.72" y="211" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="420.64" y="211" class="sans" font-size="16.5" fill="#78736D">MySQL</text>
+<text x="0" y="190" class="mono-m" font-size="12" letter-spacing="1.2" fill="#78736D">AI &#38; ML</text>
+<text x="216" y="190" class="sans" font-size="14" fill="#1A1918">LLM APIs</text>
+<text x="283.71" y="190" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="298.43" y="190" class="sans" font-size="14" fill="#78736D">TensorFlow</text>
+<text x="379.4" y="190" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="394.12" y="190" class="sans" font-size="14" fill="#78736D">Keras</text>
+<text x="437.8" y="190" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="452.52" y="190" class="sans" font-size="14" fill="#78736D">Pandas</text>
+<text x="508.04" y="190" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="522.76" y="190" class="sans" font-size="14" fill="#78736D">Streamlit</text>
 </g>
-<rect x="0" y="231" width="840" height="1" fill="#000000" fill-opacity="0.07" class="grow" style="animation-delay:0.41s"/>
+<rect x="0" y="207" width="840" height="1" fill="#000000" fill-opacity="0.07" class="grow" style="animation-delay:0.41s"/>
 <g class="rise" style="animation-delay:0.38s">
-<text x="0" y="256" class="mono-m" font-size="10.5" letter-spacing="1.6" fill="#78736D">ML &#38; DATA</text>
-<text x="168" y="257" class="sans" font-size="16.5" fill="#78736D">TensorFlow</text>
-<text x="263" y="257" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="279.92" y="257" class="sans" font-size="16.5" fill="#78736D">Keras</text>
-<text x="330.98" y="257" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="347.9" y="257" class="sans" font-size="16.5" fill="#78736D">Pandas</text>
-<text x="412.9" y="257" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="429.82" y="257" class="sans" font-size="16.5" fill="#78736D">Streamlit</text>
+<text x="0" y="230" class="mono-m" font-size="12" letter-spacing="1.2" fill="#78736D">MOBILE</text>
+<text x="216" y="230" class="sans" font-size="14" fill="#1A1918">React Native</text>
+<text x="305.8" y="230" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="320.52" y="230" class="sans" font-size="14" fill="#1A1918">Expo</text>
+<text x="360.36" y="230" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="375.08" y="230" class="sans" font-size="14" fill="#78736D">NativeWind</text>
 </g>
-<rect x="0" y="277" width="840" height="1" fill="#000000" fill-opacity="0.07" class="grow" style="animation-delay:0.48s"/>
+<rect x="0" y="247" width="840" height="1" fill="#000000" fill-opacity="0.07" class="grow" style="animation-delay:0.48s"/>
 <g class="rise" style="animation-delay:0.45s">
-<text x="0" y="302" class="mono-m" font-size="10.5" letter-spacing="1.6" fill="#78736D">TOOLING</text>
-<text x="168" y="303" class="sans" font-size="16.5" fill="#1A1918">Git</text>
-<text x="198.38" y="303" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="215.3" y="303" class="sans" font-size="16.5" fill="#1A1918">Vite</text>
-<text x="253.77" y="303" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="270.69" y="303" class="sans" font-size="16.5" fill="#1A1918">pnpm</text>
-<text x="322.73" y="303" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="339.65" y="303" class="sans" font-size="16.5" fill="#78736D">Webpack</text>
-<text x="419.78" y="303" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="436.7" y="303" class="sans" font-size="16.5" fill="#78736D">Vercel</text>
-<text x="493.15" y="303" class="sans" font-size="16.5" fill="#C9C5C0">/</text>
-<text x="510.07" y="303" class="sans" font-size="16.5" fill="#78736D">Figma</text>
+<text x="0" y="270" class="mono-m" font-size="12" letter-spacing="1.2" fill="#78736D">TOOLING</text>
+<text x="216" y="270" class="sans" font-size="14" fill="#1A1918">Git</text>
+<text x="242.14" y="270" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="256.86" y="270" class="sans" font-size="14" fill="#1A1918">Vite</text>
+<text x="289.87" y="270" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="304.59" y="270" class="sans" font-size="14" fill="#1A1918">pnpm</text>
+<text x="349.1" y="270" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="363.82" y="270" class="sans" font-size="14" fill="#78736D">Webpack</text>
+<text x="432.17" y="270" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="446.89" y="270" class="sans" font-size="14" fill="#78736D">Vercel</text>
+<text x="495.16" y="270" class="sans" font-size="14" fill="#C9C5C0">/</text>
+<text x="509.88" y="270" class="sans" font-size="14" fill="#78736D">Figma</text>
 </g>
 </svg>

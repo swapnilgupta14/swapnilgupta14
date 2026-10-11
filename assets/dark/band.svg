@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="840" height="128" viewBox="0 0 840 128" fill="none">
+<style>@font-face{font-family:'GM5';src:url(data:font/woff2;base64,d09GMgABAAAAAAXAAA8AAAAACygAAAVoAAGzdQAAAAAAAAAAAAAAAAAAAAAAAAAAGhYbIBwqBmA/U1RBVEQAbBEICosQiEwBNgIkAzYLNAAEIAWEGAcgG6sIAJ4D7s6iiLgQlyyQQO4/jtTz8uSJIForq3vnAcGyevcfcFFACsGiI1Aikl2ETByQZrL3w7uZL9jRpCJCqVuoISLVECzgAb/bVrOv7c9dv8yIvr/tAzqGb2EaaJND46chVf0PwClwvv1cnWj8oc+0tMV483u7iVt0AVKhLTRcQoHQxDtpFa0QUudtiKlpwTmUOrPa4ZcSaAWkEPpagXbNTxcXGyUqE3AVqCGGmNKFJ4lEGEpxTaLXKmlDflFH3rTiADbJzrEbhmcOZECTQbby7+3YhCp41KR7mD99r0FZQ46AgOzNpzGJI4RGiV4MzGKc8foSCHDsJIJIO0TRCYEYiV9QCRl8gACJCr2YAr1YdgHdijGlSf0WSCiY2N3z///4eYVkVCzvofbfJ496xMMe8iACAjwhMqBYaIgWtwyMgbgBcgVo/FUUc7fQ5azqmU7utRpKY0tePlbcWtJAaxZ3FuSxiruq8oYauR7Qz4ytYSvo6rLVWmAmjt5+G9l8+Q52/NxsKhXo0bM34fxbb33cL61mMGNsAV8znO8W1OJOI5svUJTjBdBqVtqW1WSYsh7GmG3DK4yFMgV+M4ZIDYoUQHPBYCObxZo5izAxxkarZBkK4MBexULNyAq6hnVPxS7MpvPYwdUO1uE0h4AWUbD2lJ3HC6IMZludcGB2y+qlXmAFmEcrHfPNZtRy8c2PEimPrLuM049vQTZv08TbWY8wmy5+/GX06Bmcv+m5/K1dFLclFKHV+xiWdaWNQ49axpYcmH0Js9lRhw1jFsVLSsPg89TB5A5dbasZzr0T6wCV/bGk7IKr6DifOeWwEDvnlNMhdqFcoRoZFc+1ZW3Wtox+k0Yn1MZ8XZBVcm53n7E3rR4ZFBfTtOKio82rQucC4Tt7Y+PoBrEAtt5JKl+ZW597zUiCsw8Smx9xF9YXemCylOWrxFcWquAd9Q7QHNfD9eSDcuVQGqkPn44hau8pxLCgXVyc1+jeot7KnHUAzlIX/3UeCczt2b8vNbqfPtke7qT0ydNu46XOWtjYjb8cZWtedc3ydeiJOWEWXJXKdKCDoSxpxq/KpBDgHiZiWDTTlnU42nIifNjG8LYczPrXAks/VITHcKdIRGuGRxXxgqhPJRXM4OXNqXwQvhI2e9x2vif1PP4l/MUyt5Rf/3JbRjQNwn4U24g5R3rVsp6tGTlDhrOFJc9RRXdNZ0t6z1Sk6UWxYHJKjC/SMBo1LRCG2fIAx9klFrb29d79d3PzR2q+olxWtjTcpZgQTC77R5QK3xTu4YgCbFnf7d0zoomBxnvFjZ+ZKkm8Rz89LbCHB+EP8lWSixXw85OnIrdFmyuMGGvB0fUUNR3JlzctA8wHSLnCh5JT1VgJc7frnvX0bnE9Q/Ie4n4yfVB+WA5/8F6/LHHuWHnQidcu48G3lw8uYzXAAPAd5+Fb3yOK0Of8/yYQD07Rf3/DWyvC/3GZzG/h3a7rrQC8//mmC6r/w80z3ka9BMG/qzl3RdBUK1Z2Uy7jF8sY5jHSuZ0mafB/2SARHgseoR6d6tTr0w589FFgyBCmIoQBBWItbnJHyQNuqWxm6HU1M7V7yKyseJZZzA4w6wwPj1FvemaFENAa6/g6chDfTs5cDx8aO4QiorJoFC+fhGbDBg0b1czkxbs9Uu4YFKcKHVqEHyJSPAuSetongo6CEOvk8yREpX7agAFeFF4+yakfKSJkQIobjeQWbJpdPH08WAhL6F893XUGpI7wRBjwp7ySggi0If0mDBo0w8JASGVGtDKjD/pnn9XcfBbu+yEqxtS830qH9sBbNW8XqvGv40JJCpFLIARRSAYRIYQwJlB7w0AYAAA=) format('woff2');font-style:normal;font-weight:500}
+@font-face{font-family:'IS';src:url(data:font/woff2;base64,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) format('woff2');font-style:normal;font-weight:400}
+.mono-m{font-family:'GM5','SF Mono',Menlo,Consolas,monospace;font-style:normal;font-weight:500}
+.serif{font-family:'IS',Georgia,'Times New Roman',serif;font-style:normal;font-weight:400}
+.mqa{animation:mqa 55.62s linear infinite}@keyframes mqa{to{transform:translateX(-1557.36px)}}
+.mqb{animation:mqb 60.12s linear infinite}@keyframes mqb{from{transform:translateX(-1202.4px)}}
+.rise{animation:rise 1s cubic-bezier(.16,1,.3,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}}
+.fade{animation:fade 1.1s ease both}
+@keyframes fade{from{opacity:0}}
+.grow{transform-box:fill-box;transform-origin:0 50%;animation:grow 1.4s cubic-bezier(.65,0,.35,1) both}
+@keyframes grow{from{transform:scaleX(0)}}
+.draw{stroke-dasharray:1 1;animation:draw 1.6s cubic-bezier(.65,0,.35,1) both}
+@keyframes draw{from{stroke-dashoffset:1}}
+.pulse{transform-box:fill-box;transform-origin:50% 50%;animation:pulse 2.4s cubic-bezier(.2,.6,.4,1) infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.6}70%,100%{transform:scale(3.4);opacity:0}}
+.blink{animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.nudge{animation:nudge 3s ease-in-out infinite}
+@keyframes nudge{0%,50%,100%{transform:translate(0,0)}25%{transform:translate(2px,-2px)}}
+.roll{animation:roll 1.8s cubic-bezier(.16,1,.3,1) both}
+@keyframes roll{from{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><linearGradient id="edgeg"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".09" stop-color="#fff"/><stop offset=".91" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><mask id="edge" maskUnits="userSpaceOnUse" x="0" y="0" width="840" height="128"><rect width="840" height="128" fill="url(#edgeg)"/></mask></defs>
+<rect x="0" y="0" width="840" height="1" fill="#FFFFFF" fill-opacity="0.07"/>
+<rect x="0" y="127" width="840" height="1" fill="#FFFFFF" fill-opacity="0.07"/>
+<g mask="url(#edge)">
+<g class="mqa">
+<text x="0" y="62" class="serif" font-size="34" fill="#EDEBE8">Full-stack development</text>
+<path d="M296.24 44Q297.56 48.68 302.24 50Q297.56 51.32 296.24 56Q294.92 51.32 290.24 50Q294.92 48.68 296.24 44Z" fill="#FF7A45"/>
+<text x="318.24" y="62" class="serif" font-size="34" fill="#85827C">AI &#38; machine learning</text>
+<path d="M598.71 44Q600.03 48.68 604.71 50Q600.03 51.32 598.71 56Q597.39 51.32 592.71 50Q597.39 48.68 598.71 44Z" fill="#FF7A45"/>
+<text x="620.71" y="62" class="serif" font-size="34" fill="#EDEBE8">LLM apps &#38; agents</text>
+<path d="M858.88 44Q860.2 48.68 864.88 50Q860.2 51.32 858.88 56Q857.56 51.32 852.88 50Q857.56 48.68 858.88 44Z" fill="#FF7A45"/>
+<text x="880.88" y="62" class="serif" font-size="34" fill="#85827C">Web &#38; mobile</text>
+<path d="M1061.29 44Q1062.61 48.68 1067.29 50Q1062.61 51.32 1061.29 56Q1059.97 51.32 1055.29 50Q1059.97 48.68 1061.29 44Z" fill="#FF7A45"/>
+<text x="1083.29" y="62" class="serif" font-size="34" fill="#EDEBE8">Web3</text>
+<path d="M1165.06 44Q1166.38 48.68 1171.06 50Q1166.38 51.32 1165.06 56Q1163.74 51.32 1159.06 50Q1163.74 48.68 1165.06 44Z" fill="#FF7A45"/>
+<text x="1187.06" y="62" class="serif" font-size="34" fill="#85827C">Design-minded engineering</text>
+<path d="M1535.36 44Q1536.68 48.68 1541.36 50Q1536.68 51.32 1535.36 56Q1534.04 51.32 1529.36 50Q1534.04 48.68 1535.36 44Z" fill="#FF7A45"/>
+<text x="1557.36" y="62" class="serif" font-size="34" fill="#EDEBE8">Full-stack development</text>
+<path d="M1853.6 44Q1854.92 48.68 1859.6 50Q1854.92 51.32 1853.6 56Q1852.28 51.32 1847.6 50Q1852.28 48.68 1853.6 44Z" fill="#FF7A45"/>
+<text x="1875.6" y="62" class="serif" font-size="34" fill="#85827C">AI &#38; machine learning</text>
+<path d="M2156.07 44Q2157.39 48.68 2162.07 50Q2157.39 51.32 2156.07 56Q2154.75 51.32 2150.07 50Q2154.75 48.68 2156.07 44Z" fill="#FF7A45"/>
+<text x="2178.07" y="62" class="serif" font-size="34" fill="#EDEBE8">LLM apps &#38; agents</text>
+<path d="M2416.24 44Q2417.56 48.68 2422.24 50Q2417.56 51.32 2416.24 56Q2414.92 51.32 2410.24 50Q2414.92 48.68 2416.24 44Z" fill="#FF7A45"/>
+<text x="2438.24" y="62" class="serif" font-size="34" fill="#85827C">Web &#38; mobile</text>
+<path d="M2618.65 44Q2619.97 48.68 2624.65 50Q2619.97 51.32 2618.65 56Q2617.33 51.32 2612.65 50Q2617.33 48.68 2618.65 44Z" fill="#FF7A45"/>
+<text x="2640.65" y="62" class="serif" font-size="34" fill="#EDEBE8">Web3</text>
+<path d="M2722.42 44Q2723.74 48.68 2728.42 50Q2723.74 51.32 2722.42 56Q2721.1 51.32 2716.42 50Q2721.1 48.68 2722.42 44Z" fill="#FF7A45"/>
+<text x="2744.42" y="62" class="serif" font-size="34" fill="#85827C">Design-minded engineering</text>
+<path d="M3092.72 44Q3094.04 48.68 3098.72 50Q3094.04 51.32 3092.72 56Q3091.4 51.32 3086.72 50Q3091.4 48.68 3092.72 44Z" fill="#FF7A45"/>
+</g>
+<g class="mqb">
+<text x="0" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">TYPESCRIPT</text>
+<text x="101" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="120" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">PYTHON</text>
+<text x="185.8" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="204.8" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">REACT</text>
+<text x="261.8" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="280.8" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">NEXT.JS</text>
+<text x="355.4" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="374.4" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">NODE.JS</text>
+<text x="449" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="468" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">FASTAPI</text>
+<text x="542.6" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="561.6" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">LLM APIS</text>
+<text x="645" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="664" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">TENSORFLOW</text>
+<text x="765" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="784" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">REACT NATIVE</text>
+<text x="902.6" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="921.6" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">EXPO</text>
+<text x="969.8" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="988.8" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">TAILWIND CSS</text>
+<text x="1107.4" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="1126.4" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">MYSQL</text>
+<text x="1183.4" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="1202.4" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">TYPESCRIPT</text>
+<text x="1303.4" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="1322.4" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">PYTHON</text>
+<text x="1388.2" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="1407.2" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">REACT</text>
+<text x="1464.2" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="1483.2" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">NEXT.JS</text>
+<text x="1557.8" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="1576.8" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">NODE.JS</text>
+<text x="1651.4" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="1670.4" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">FASTAPI</text>
+<text x="1745" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="1764" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">LLM APIS</text>
+<text x="1847.4" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="1866.4" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">TENSORFLOW</text>
+<text x="1967.4" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="1986.4" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">REACT NATIVE</text>
+<text x="2105" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="2124" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">EXPO</text>
+<text x="2172.2" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="2191.2" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">TAILWIND CSS</text>
+<text x="2309.8" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+<text x="2328.8" y="97" class="mono-m" font-size="12" letter-spacing="1.6" fill="#85827C">MYSQL</text>
+<text x="2385.8" y="97" class="mono-m" font-size="12" fill="#4A4845">&#183;</text>
+</g>
+</g>
+</svg>

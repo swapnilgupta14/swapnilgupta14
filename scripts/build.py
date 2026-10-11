@@ -16,7 +16,9 @@ import base64
 import datetime as dt
 import io
 import json
+import math
 import os
+import re
 import subprocess
 import sys
 import urllib.request
@@ -30,8 +32,19 @@ from fontTools.ttLib import TTFont
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONT_DIR = os.path.join(ROOT, "scripts", "fonts")
 OUT = os.path.join(ROOT, "assets")
+STATE = os.path.join(ROOT, "scripts", "state.json")
 LOGIN = "swapnilgupta14"
 W = 840  # GitHub's profile README column is ~830px, so 840 renders ~1:1
+
+# Type scale: 12px sentences, 14px accents/subheadings, 16px headings.
+# Display type (name, marquee, big numbers, sign-off) sits outside it.
+TEXT, SUB, HEAD = 12, 14, 16
+
+# One left-aligned grid for every section: four columns with a 24px gutter.
+# Spec columns, stack items, cards and stats all start on these lines.
+GUT = 24
+COL = [0, 216, 432, 648]
+LABEL = ("mono-m", TEXT, 1.2)  # uppercase mono labels
 
 # ─────────────────────────────────────────────────────────────── CONTENT ──
 
@@ -40,44 +53,50 @@ HERO = dict(
     status="CURRENTLY AT SIMPPLR",
     name="Swapnil Gupta",
     lines=[
-        [("Software engineer building web & mobile products", "sans", "fg2")],
-        [("with an eye for the details that make them ", "sans", "fg2"), ("feel right.", "serif-i", "accent")],
+        [("Full-stack developer working across AI/ML, web & mobile,", "sans", "fg2")],
+        [("and genuinely curious about ", "sans", "fg2"), ("all things tech.", "serif-i", "accent")],
     ],
     specs=[
-        ("ROLE", "Software Engineer"),
-        ("FOCUS", "Frontend & product UI"),
-        ("PLATFORMS", "Web, iOS & Android"),
+        ("ROLE", "Full-Stack Developer"),
+        ("FOCUS", "AI/ML, web & mobile"),
+        ("STACK", "TypeScript & Python"),
         ("BASED", "Earth-616"),
     ],
 )
 
-NAV = [("01", "About", "about"), ("02", "Stack", "stack"), ("03", "Work", "work"),
-       ("04", "Numbers", "numbers"), ("05", "Contact", "contact")]
-
-ABOUT = dict(
-    paragraphs=[
-        [("I’m a software engineer who lives where ", "fg2"), ("engineering meets design", "fg"),
-         (". I build product interfaces for the web and mobile, and care most about ", "fg2"),
-         ("the parts you feel before you notice", "fg"),
-         (" — speed, motion and the states nobody screenshots.", "fg2")],
-        [("Days: product engineering at ", "fg2"), ("Simpplr", "fg"),
-         (". Nights: UI kits, side projects and small experiments.", "fg2")],
-    ],
-    index=[
-        ("NOW", "Product engineering at Simpplr"),
-        ("BUILDING", "Blueberry UI, a React component kit"),
-        ("EXPLORING", "React Native, Expo & Web3"),
-        ("OBSESSING OVER", "Web performance & motion"),
-    ],
+# Two rows scrolling in opposite directions: what I do, then what I use.
+# The README twin of the "Ask" composer on swapnilgupta.in: same prompts,
+# same 4.5s rotation. README.md links it to ?ask=1#ask on the site.
+COMPOSER = dict(
+    prompts=["Ask about my experience", "Ask about my projects", "What do I work on at Simpplr?",
+             "Explore my work, skills & writing", "Ask sAI, the assistant on this site", "How do I get in touch?"],
+    heading=[("Have a question? ", "sans-m", "fg"), ("Ask sAI", "sans-m", "accentText")],
+    sub="The assistant on my site knows my projects, experience and writing.",
+    slot=4.5,
+    width=COL[3] - GUT,  # three grid columns (~75%), ending a gutter before BASED
 )
+
+MARQUEE = dict(
+    themes=["Full-stack development", "AI & machine learning", "LLM apps & agents",
+            "Web & mobile", "Web3", "Design-minded engineering"],
+    tools=["TypeScript", "Python", "React", "Next.js", "Node.js", "FastAPI", "LLM APIs",
+           "TensorFlow", "React Native", "Expo", "Tailwind CSS", "MySQL"],
+)
+
+ABOUT = [
+    [("I work across the whole stack — ", "fg2"), ("models, APIs and interfaces", "accentText"),
+     (" — mostly in TypeScript and Python, for the web and mobile.", "fg2")],
+    [("Outside the day job I’m usually deep in ", "fg2"), ("what’s next", "accentText"),
+     (": LLM agents, RAG and Web3.", "fg2")],
+]
 
 # (label, [(item, daily_driver)])
 STACK = [
-    ("LANGUAGES", [("TypeScript", 1), ("JavaScript", 1), ("Python", 0), ("C++", 0), ("SQL", 0)]),
+    ("LANGUAGES", [("TypeScript", 1), ("Python", 1), ("JavaScript", 1), ("C++", 0), ("SQL", 0)]),
     ("FRONTEND", [("React", 1), ("Next.js", 1), ("Tailwind CSS", 1), ("Redux Toolkit", 0), ("SCSS", 0), ("GSAP", 0), ("Framer Motion", 0)]),
+    ("BACKEND", [("Node.js", 1), ("FastAPI", 1), ("Express", 0), ("MySQL", 0)]),
+    ("AI & ML", [("LLM APIs", 1), ("TensorFlow", 0), ("Keras", 0), ("Pandas", 0), ("Streamlit", 0)]),
     ("MOBILE", [("React Native", 1), ("Expo", 1), ("NativeWind", 0)]),
-    ("BACKEND", [("Node.js", 1), ("Express", 0), ("FastAPI", 0), ("MySQL", 0)]),
-    ("ML & DATA", [("TensorFlow", 0), ("Keras", 0), ("Pandas", 0), ("Streamlit", 0)]),
     ("TOOLING", [("Git", 1), ("Vite", 1), ("pnpm", 1), ("Webpack", 0), ("Vercel", 0), ("Figma", 0)]),
 ]
 
@@ -91,9 +110,9 @@ WORK = [
     dict(key="synapse", name="Synapse", domain="org-synapse.vercel.app", glyph="graph",
          blurb="An enterprise workflow suite for projects, teams, task allocation and progress tracking.",
          tags="TYPESCRIPT · SAAS"),
-    dict(key="blueberry", name="Blueberry UI", domain="blueberry-ui-site.vercel.app", glyph="layers",
-         blurb="A custom React component library, packaged for npm with its own documentation site.",
-         tags="REACT · DESIGN SYSTEM"),
+    dict(key="stocks", name="Stock Trend Predictor", domain="github.com", glyph="chart",
+         blurb="LSTM-based stock forecasting trained on historical prices, served as a Streamlit app.",
+         tags="PYTHON · DEEP LEARNING"),
 ]
 
 CONTACT = dict(
@@ -202,7 +221,7 @@ class Svg:
     def __init__(self, theme, w, h):
         self.c = THEMES[theme]
         self.w, self.h = w, h
-        self.out, self.defs = [], []
+        self.out, self.defs, self.css = [], [], []
         self.chars = defaultdict(set)
 
     def paint(self, attr, token):
@@ -235,6 +254,10 @@ class Svg:
                         f'{self.paint("fill", fill)}{extra}>{esc(s)}</text>')
         return w
 
+    def label(self, x, y, s, fill="fg3", align="start"):
+        face, size, tracking = LABEL
+        return self.text(x, y, s, face, size, fill, tracking, align)
+
     def rich(self, x, y, runs, size):
         """runs: (text, face, fill[, size]); each run is placed absolutely so
         whitespace handling never shifts anything."""
@@ -256,6 +279,22 @@ class Svg:
         klass = f' class="{cls}"' if cls else ""
         self.out.append(f'<rect x="{n(x1)}" y="{n(y)}" width="{n(x2 - x1)}" height="1" {self.paint("fill", token)}{klass}{style}/>')
 
+    def sparkle(self, cx, cy, r):
+        k = r * 0.22
+        self.add(f'<path d="M{n(cx)} {n(cy - r)}Q{n(cx + k)} {n(cy - k)} {n(cx + r)} {n(cy)}Q{n(cx + k)} {n(cy + k)} '
+                 f'{n(cx)} {n(cy + r)}Q{n(cx - k)} {n(cy + k)} {n(cx - r)} {n(cy)}Q{n(cx - k)} {n(cy - k)} {n(cx)} {n(cy - r)}Z" '
+                 f'{self.paint("fill", "accent")}/>')
+
+    def edge_fade(self, uid, h):
+        """Mask that fades content out at the left and right edges."""
+        self.defs.append(
+            f'<linearGradient id="{uid}g"><stop offset="0" stop-color="#fff" stop-opacity="0"/>'
+            f'<stop offset=".09" stop-color="#fff"/><stop offset=".91" stop-color="#fff"/>'
+            f'<stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>'
+            f'<mask id="{uid}" maskUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{n(h)}">'
+            f'<rect width="{W}" height="{n(h)}" fill="url(#{uid}g)"/></mask>')
+        return f' mask="url(#{uid})"'
+
     def render(self):
         faces, classes = [], []
         for key in sorted(self.chars):
@@ -263,149 +302,281 @@ class Svg:
             faces.append(f"@font-face{{font-family:'{f.family}';src:url(data:font/woff2;base64,{f.woff2(self.chars[key])}) "
                          f"format('woff2');font-style:{f.style};font-weight:{f.weight}}}")
             classes.append(f".{key}{{font-family:'{f.family}',{f.fallback};font-style:{f.style};font-weight:{f.weight}}}")
-        css = "\n".join(faces + classes) + MOTION
+        css = "\n".join(faces + classes + self.css) + MOTION
         defs = f"<defs>{''.join(self.defs)}</defs>" if self.defs else ""
-        return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{n(self.w)}" height="{n(self.h)}" '
+        return (f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="{n(self.w)}" height="{n(self.h)}" '
                 f'viewBox="0 0 {n(self.w)} {n(self.h)}" fill="none">\n<style>{css}</style>\n{defs}\n'
                 + "\n".join(self.out) + "\n</svg>\n")
 
 
-def wrap(runs, face, size, width):
-    """Greedy word wrap over styled runs -> list of lines (each a list of runs)."""
-    f = FONTS[face]
+def wrap(runs, width, size):
+    """Greedy word wrap over styled runs (text, face, fill[, size]) -> lines of runs."""
     words = []
-    for text, fill in runs:
+    for run in runs:
+        text, face, fill = run[:3]
+        sz = run[3] if len(run) > 3 else size
         for i, word in enumerate(text.split(" ")):
-            words.append((("" if i == 0 else " ") + word, fill))
+            words.append((("" if i == 0 else " ") + word, face, fill, sz))
     lines, line, lw = [], [], 0.0
-    for word, fill in words:
-        ww = f.width(word, size)
+    for word, face, fill, sz in words:
+        ww = FONTS[face].width(word, sz)
         if line and lw + ww > width and word.startswith(" "):
             lines.append(line)
             line, lw, word = [], 0.0, word[1:]
-            ww = f.width(word, size)
-        if line and line[-1][1] == fill:
-            line[-1] = (line[-1][0] + word, fill)
+            ww = FONTS[face].width(word, sz)
+        if line and line[-1][1:] == [face, fill, sz]:
+            line[-1][0] += word
         else:
-            line.append((word, fill))
+            line.append([word, face, fill, sz])
         lw += ww
     if line:
         lines.append(line)
-    return [[(t, face, fill) for t, fill in ln if t] for ln in lines]
+    return [[tuple(r) for r in ln if r[0]] for ln in lines]
 
 
-def section_header(svg, num, label, y=20, meta=None):
+def marquee(s, uid, pieces, speed, reverse=False):
+    """Seamless loop: `pieces` is a list of (draw(x), width); the cycle is
+    repeated until it covers the canvas twice, then slid by one cycle."""
+    cycle = sum(w for _, w in pieces)
+    s.add(f'<g class="{uid}">')
+    x = 0.0
+    for _ in range(int(W // cycle) + 2):
+        for draw, w in pieces:
+            draw(x)
+            x += w
+    s.add("</g>")
+    edge = "from" if reverse else "to"
+    s.css.append(f".{uid}{{animation:{uid} {n(cycle / speed)}s linear infinite}}"
+                 f"@keyframes {uid}{{{edge}{{transform:translateX(-{n(cycle)}px)}}}}")
+
+
+def section_header(svg, num, title, y=22, meta=None):
     with svg.g("rise"):
-        w1 = svg.text(0, y, num, "mono-m", 11, "accentText", 1.6)
-        w2 = svg.text(w1 + 10, y, label, "mono-m", 11, "fg3", 1.6)
+        w1 = svg.text(0, y, num, "mono-m", SUB, "accentText", 0.5)
+        w2 = svg.text(w1 + 10, y, title, "sans-m", HEAD, "fg", -0.1)
         right = W
         if meta:
-            mw = svg.text(W, y, meta, "mono", 10.5, "fg3", 1.2, align="end")
-            right = W - mw - 14
-    svg.hline(w1 + w2 + 26, right, y - 4, "line2", "grow", 0.15)
+            right = W - svg.label(W, y, meta, align="end") - 16
+    svg.hline(w1 + w2 + 26, right, y - 5, "line2", "grow", 0.15)
 
 # ──────────────────────────────────────────────────────────────── PIECES ──
 
-def hero(theme):
-    s = Svg(theme, W, 344)
+def views_badge(s, views, cx, cy, r=52):
+    """Circular seal: the label runs round a slowly turning ring and the
+    count rolls up in the middle under a small, glancing eye."""
+    face, size, tracking = "mono-m", 10.5, 1.2
+    ring = r - 13  # radius of the text baseline
+    s.defs.append(f'<path id="ring" d="M{n(cx - ring)} {n(cy)}a{ring} {ring} 0 1 1 {2 * ring} 0a{ring} {ring} 0 1 1 {-2 * ring} 0"/>')
+    label = "PROFILE VIEWS"
+    s.chars[face].update(label + " \u2022")
+    parts = "".join(f'<tspan {s.paint("fill", "fg2")}>{label}</tspan><tspan {s.paint("fill", "accent")}> \u2022 </tspan>'
+                    for _ in range(2))
+    s.css.append(f".spin{{transform-origin:{n(cx)}px {n(cy)}px;animation:spin 26s linear infinite}}"
+                 "@keyframes spin{to{transform:rotate(360deg)}}"
+                 ".look{animation:look 5s ease-in-out infinite}"
+                 "@keyframes look{0%,35%,100%{transform:translateX(0)}45%,60%{transform:translateX(-1.6px)}70%,90%{transform:translateX(1.6px)}}")
+    with s.g("fade", 0.4):
+        s.add(f'<circle cx="{n(cx)}" cy="{n(cy)}" r="{r - .5}" {s.paint("fill", "surface")} {s.paint("stroke", "line")}/>')
+        s.add(f'<circle cx="{n(cx)}" cy="{n(cy)}" r="{ring - 11}" {s.paint("stroke", "line2")}/>')
+        s.add(f'<g class="spin"><text class="{face}" font-size="{size}" letter-spacing="{n(tracking)}">'
+              f'<textPath href="#ring" xlink:href="#ring" textLength="{n(2 * math.pi * ring)}" lengthAdjust="spacing">'
+              f'{parts}</textPath></text></g>')
+        ex, ey = cx - 7, cy - 15
+        s.add(f'<g transform="translate({n(ex)} {n(ey)}) scale(.875)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'
+              f'<path d="M1 8s2.6-5 7-5 7 5 7 5-2.6 5-7 5-7-5-7-5Z" {s.paint("stroke", "fg2")}/>'
+              f'<g class="look"><circle cx="8" cy="8" r="2.3" {s.paint("fill", "accent")}/></g></g>')
+    value = f"{views:,}"
+    vw = FONTS["sans-m"].width(value, SUB)
+    with s.g("rise", 0.5):
+        stat_number(s, cx - vw / 2, cy + 13, value, SUB, 0.7, "views", face="sans-m")
+
+
+def hero(theme, views):
+    s = Svg(theme, W, 0)
     with s.g("rise"):
-        kw = s.text(0, 22, HERO["kicker"], "mono-m", 11, "fg3", 1.8)
-        s.text(kw + 4, 22, "↗", "sans", 12, "accentText")
-        sw = s.text(W, 22, HERO["status"], "mono-m", 11, "fg2", 1.8, align="end")
-        cx = W - sw - 12
-        s.add(f'<circle cx="{n(cx)}" cy="18" r="3.5" {s.paint("fill", "accent")} class="pulse"/>')
-        s.add(f'<circle cx="{n(cx)}" cy="18" r="3.5" {s.paint("fill", "accent")}/>')
-    s.hline(0, W, 42, "line", "grow", 0.1)
+        kw = s.label(0, 20, HERO["kicker"])
+        s.text(kw + 3, 20, "↗", "sans", 12, "accentText")
+        sw = s.label(W, 20, HERO["status"], "fg2", align="end")
+        cx = W - sw - 11
+        s.add(f'<circle cx="{n(cx)}" cy="15.8" r="3.5" {s.paint("fill", "accent")} class="pulse"/>')
+        s.add(f'<circle cx="{n(cx)}" cy="15.8" r="3.5" {s.paint("fill", "accent")}/>')
+    s.hline(0, W, 40, "line", "grow", 0.1)
     with s.g("rise", 0.12):
-        s.text(-4, 150, HERO["name"], "serif", 104, "fg", -1)
+        s.text(-3, 150, HERO["name"], "serif", 83, "fg", -0.8)
+    accent = SUB + 2  # the italic serif runs small; +2px matches Geist's x-height
     for i, line in enumerate(HERO["lines"]):
         with s.g("rise", 0.28 + i * 0.1):
-            runs = [(t, f, c, 24.5 if f.startswith("serif") else 21) for t, f, c in line]
-            s.rich(0, 200 + i * 33, runs, 21)
+            runs = [(t, f, c, accent if f.startswith("serif") else SUB) for t, f, c in line]
+            s.rich(0, 190 + i * 22, runs, SUB)
     # hand-drawn underline under the italic phrase
     last = HERO["lines"][-1]
-    x0 = FONTS["sans"].width(last[0][0], 21)
-    x1 = x0 + FONTS["serif-i"].width(last[1][0].rstrip("."), 24.5)
-    s.add(f'<path d="M{n(x0)} 241 Q{n((x0 + x1) / 2)} 245 {n(x1 + 4)} 239.5" pathLength="1" '
-          f'{s.paint("stroke", "accent")} stroke-width="1.6" stroke-linecap="round" class="draw" style="animation-delay:1s"/>')
-    s.hline(0, W, 274, "line", "grow", 0.35)
+    ly = 190 + (len(HERO["lines"]) - 1) * 22
+    views_badge(s, views, W - 53, (40 + ly + 40) / 2)  # centred between the two hairlines
+    x0 = FONTS["sans"].width(last[0][0], SUB)
+    x1 = x0 + FONTS["serif-i"].width(last[1][0].rstrip("."), accent)
+    s.add(f'<path d="M{n(x0)} {ly + 5} Q{n((x0 + x1) / 2)} {ly + 8} {n(x1 + 3)} {ly + 4}" pathLength="1" '
+          f'{s.paint("stroke", "accent")} stroke-width="1.3" stroke-linecap="round" class="draw" style="animation-delay:1s"/>')
+    s.hline(0, W, ly + 40, "line", "grow", 0.35)
     for i, (label, value) in enumerate(HERO["specs"]):
         with s.g("rise", 0.5 + i * 0.08):
-            x = i * 214
-            s.text(x, 304, label, "mono-m", 10.5, "fg3", 1.6)
-            s.text(x, 330, value, "sans", 16, "fg")
+            s.label(COL[i], ly + 70, label)
+            s.text(COL[i], ly + 94, value, "sans", HEAD, "fg")
+    s.h = ly + 104  # tight bottom: the composer sits right under the specs
     return s
 
 
-def nav_pill(theme, num, label):
-    f = FONTS["mono-m"]
-    nw, lw = f.width(num, 11, 1.4), f.width(label.upper(), 11, 1.4)
-    w = 16 + nw + 6 + lw + 14
-    s = Svg(theme, w + 8, 34)
-    with s.g("fade"):
-        s.add(f'<rect x=".5" y=".5" width="{n(w - 1)}" height="33" rx="16.5" {s.paint("fill", "surface")} {s.paint("stroke", "line")}/>')
-        s.text(16, 21, num, "mono-m", 11, "accentText", 1.4)
-        s.text(16 + nw + 6, 21, label.upper(), "mono-m", 11, "fg2", 1.4)
+def composer(theme):
+    """Ask sAI: heading and a one-line explainer flush left, then a chat
+    bar spanning the first three grid columns. In the bar the site's prompts
+    type out one by one behind a caret; all motion is CSS keyframes on one
+    shared cycle, so it loops with no script. Padding gives equal visible
+    space above the heading and below the bar."""
+    width, h = COMPOSER["width"], 50  # width of the bar itself
+    top, bottom = 58, 64  # + hero tail and README margins = ~80px of air on both sides
+    y_head = top + 12
+    y_sub = y_head + 22
+    y0 = y_sub + 20
+    cy = y0 + h / 2
+    s = Svg(theme, W, y0 + h + bottom)
+    prompts, slot = COMPOSER["prompts"], COMPOSER["slot"]
+    cycle = len(prompts) * slot
+    pct = lambda t: n(max(0.0, t) / cycle * 100)
+    f, x0 = FONTS["sans"], 44
+
+    s.css.append(".twinkle{transform-box:fill-box;transform-origin:50% 50%;animation:twinkle 2.4s ease-in-out infinite}"
+                 "@keyframes twinkle{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(.72) rotate(45deg)}}")
+    with s.g("rise", 0.1):
+        s.rich(0, y_head, COMPOSER["heading"], HEAD)
+    with s.g("rise", 0.2):
+        s.text(0, y_sub, COMPOSER["sub"], "sans", TEXT, "fg3")
+
+    with s.g("rise", 0.3):
+        s.add(f'<rect x=".5" y="{n(y0 + .5)}" width="{n(width - 1)}" height="{h - 1}" rx="{n(h / 2 - .5)}" '
+              f'{s.paint("fill", "surface")} {s.paint("stroke", "line")}/>')
+        s.add('<g class="twinkle">')
+        s.sparkle(24, cy, 6)
+        s.add("</g>")
+
+    caret = []
+    for i, prompt in enumerate(prompts):
+        w, k = f.width(prompt, SUB), len(prompt)
+        t0 = i * slot
+        typed = t0 + 0.045 * k + 0.15
+        fade0, fade1 = t0 + slot - 0.55, t0 + slot - 0.25
+        frames = [f"0%,{pct(t0 - 0.01)}%{{opacity:0}}"] if i else []
+        frames += [f"{pct(t0)}%{{opacity:1;clip-path:inset(-4px 100% -6px 0);animation-timing-function:steps({k},end)}}",
+                   f"{pct(typed)}%{{clip-path:inset(-4px 0 -6px 0)}}",
+                   f"{pct(fade0)}%{{opacity:1}}", f"{pct(fade1)}%,100%{{opacity:0}}"]
+        s.css.append(f".p{i}{{animation:p{i} {n(cycle)}s linear infinite}}@keyframes p{i}{{{''.join(frames)}}}")
+        s.chars["sans"].update(prompt)
+        hidden = ' opacity="0"' if i else ""
+        s.add(f'<text x="{x0}" y="{n(cy + 5)}" class="sans p{i}" font-size="{SUB}" {s.paint("fill", "fg2")}{hidden}>{esc(prompt)}</text>')
+        nxt = (i + 1) * slot
+        caret += [f"{pct(t0)}%{{transform:translateX(0);opacity:1;animation-timing-function:steps({k},end)}}",
+                  f"{pct(typed)}%{{transform:translateX({n(w + 2)}px)}}",
+                  f"{pct(fade0)}%{{opacity:1}}", f"{pct(fade1)}%{{opacity:0}}",
+                  f"{pct(nxt - 0.01)}%{{transform:translateX({n(w + 2)}px);opacity:0}}"]
+    s.css.append(f".caret{{animation:caret {n(cycle)}s linear infinite}}@keyframes caret{{{''.join(caret)}}}")
+    w0 = f.width(prompts[0], SUB)
+    s.add(f'<g class="caret" transform="translate({n(w0 + 2)} 0)"><rect x="{x0}" y="{n(cy - 8)}" width="1.6" height="16" rx=".8" '
+          f'{s.paint("fill", "accent")} class="blink"/></g>')
+
+    bx, br = width - 7 - 18, 18
+    ink = "#14110F"
+    s.add(f'<circle cx="{n(bx)}" cy="{n(cy)}" r="{br}" {s.paint("fill", "accent")}/>'
+          f'<g class="nudge"><path d="M{n(bx - 5)} {n(cy + 5)}L{n(bx + 3.5)} {n(cy - 3.5)}M{n(bx - 2.5)} {n(cy - 3.5)}H{n(bx + 3.5)}V{n(cy + 2.5)}" '
+          f'stroke="{ink}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g>')
+
+    # hand-drawn arrow in the empty fourth column, looping in to point at the bar
+    ex = width + 12  # arrow tip, a little clear of the bar's edge
+    loop = (f"M{n(ex + 170)} {n(cy - 30)}"
+            f"C{n(ex + 150)} {n(cy - 44)} {n(ex + 110)} {n(cy - 40)} {n(ex + 104)} {n(cy - 20)}"
+            f"C{n(ex + 99)} {n(cy - 4)} {n(ex + 122)} {n(cy + 2)} {n(ex + 124)} {n(cy - 12)}"
+            f"C{n(ex + 126)} {n(cy - 28)} {n(ex + 88)} {n(cy - 26)} {n(ex + 64)} {n(cy - 12)}"
+            f"C{n(ex + 44)} {n(cy - 1)} {n(ex + 22)} {n(cy + 4)} {n(ex)} {n(cy + 1)}")
+    head = f"M{n(ex + 11)} {n(cy - 8)}L{n(ex)} {n(cy + 1)}L{n(ex + 12)} {n(cy + 9)}"
+    s.css.append(".point{animation:point 2.6s ease-in-out 3s infinite}"
+                 "@keyframes point{0%,100%{transform:translateX(0)}50%{transform:translateX(-5px)}}")
+    stroke = f'{s.paint("stroke", "accent")} stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"'
+    s.add(f'<g class="point"><path d="{loop}" pathLength="1" {stroke} class="draw" style="animation-delay:.9s"/>'
+          f'<path d="{head}" pathLength="1" {stroke} class="draw" style="animation-delay:2.2s;animation-duration:.5s"/></g>')
+    return s
+
+
+def band(theme):
+    """Two marquees between hairlines: themes drifting left, mono tools drifting right."""
+    h = 128
+    s = Svg(theme, W, h)
+    s.hline(0, W, 0, "line2")
+    s.hline(0, W, h - 1, "line2")
+    mask = s.edge_fade("edge", h)
+    pieces = []
+    for i, phrase in enumerate(MARQUEE["themes"]):
+        fill = "fg" if i % 2 == 0 else "fg3"
+        w = FONTS["serif"].width(phrase, 34)
+        pieces.append((lambda x, p=phrase, c=fill: s.text(x, 62, p, "serif", 34, c), w))
+        pieces.append((lambda x: s.sparkle(x + 22, 50, 6), 44))
+    s.add(f"<g{mask}>")
+    marquee(s, "mqa", pieces, 28)
+    tools = []
+    for tool in MARQUEE["tools"]:
+        label = tool.upper()
+        w = FONTS["mono-m"].width(label, TEXT, 1.6)
+        tools.append((lambda x, t=label: s.text(x, 97, t, "mono-m", TEXT, "fg3", 1.6), w))
+        tools.append((lambda x: s.text(x + 13, 97, "·", "mono-m", TEXT, "dim"), 32))
+    marquee(s, "mqb", tools, 20, reverse=True)
+    s.add("</g>")
     return s
 
 
 def about(theme):
-    s = Svg(theme, W, 300)
-    section_header(s, "01", "ABOUT")
-    y = last = 76
-    for para in ABOUT["paragraphs"]:
-        for line in wrap(para, "sans", 19, 456):
-            with s.g("rise", 0.1 + (y - 76) / 31 * 0.06):
-                s.rich(0, y, line, 19)
+    s = Svg(theme, W, 0)
+    section_header(s, "01", "About")
+    y = last = 70
+    for para in ABOUT:
+        for line in wrap([(t, "sans", c) for t, c in para], 540, SUB):
+            with s.g("rise", 0.1 + (y - 70) / 24 * 0.07):
+                s.rich(0, y, line, SUB)
             last = y
-            y += 31
-        y += 14
-    x = 520
-    for i, (label, value) in enumerate(ABOUT["index"]):
-        ry = 70 + i * 58
-        with s.g("rise", 0.2 + i * 0.09):
-            lw = s.text(x, ry, label, "mono-m", 10.5, "fg3", 1.6)
-            if i == 0:
-                s.add(f'<circle cx="{n(x + lw + 8)}" cy="{ry - 3.5}" r="3" {s.paint("fill", "accent")} class="pulse"/>')
-                s.add(f'<circle cx="{n(x + lw + 8)}" cy="{ry - 3.5}" r="3" {s.paint("fill", "accent")}/>')
-            s.text(x, ry + 24, value, "sans", 16, "fg")
-        if i < len(ABOUT["index"]) - 1:
-            s.hline(x, W, ry + 40, "line2", "grow", 0.3 + i * 0.09)
-    s.h = max(last, 70 + (len(ABOUT["index"]) - 1) * 58 + 24) + 24
+            y += 24
+        y += 12
+    s.h = last + 22
     return s
 
 
 def stack(theme):
     rows = len(STACK)
-    s = Svg(theme, W, 72 + (rows - 1) * 46 + 24)
-    section_header(s, "02", "STACK", meta="BRIGHT = DAILY DRIVERS")
+    top, step = 70, 40
+    s = Svg(theme, W, top + (rows - 1) * step + 20)
+    section_header(s, "02", "Stack", meta="BRIGHT = DAILY DRIVERS")
     f = FONTS["sans"]
     for i, (label, items) in enumerate(STACK):
-        y = 72 + i * 46
+        y = top + i * step
         with s.g("rise", 0.1 + i * 0.07):
-            s.text(0, y, label, "mono-m", 10.5, "fg3", 1.6)
-            x = 168
+            s.label(0, y, label)
+            x = COL[1]
             for j, (item, daily) in enumerate(items):
                 if j:
-                    s.text(x + 9, y + 1, "/", "sans", 16.5, "dim")
-                    x += 9 + f.width("/", 16.5) + 9
-                x += s.text(x, y + 1, item, "sans", 16.5, "fg" if daily else "fg3")
+                    s.text(x + 8, y, "/", "sans", SUB, "dim")
+                    x += 8 + f.width("/", SUB) + 8
+                x += s.text(x, y, item, "sans", SUB, "fg" if daily else "fg3")
         if i < rows - 1:
-            s.hline(0, W, y + 21, "line2", "grow", 0.2 + i * 0.07)
+            s.hline(0, W, y + 17, "line2", "grow", 0.2 + i * 0.07)
     return s
 
 
 def work_header(theme):
-    s = Svg(theme, W, 40)
-    section_header(s, "03", "SELECTED WORK", meta="EVERY CARD OPENS THE LIVE PROJECT")
+    s = Svg(theme, W, 34)
+    section_header(s, "03", "Selected work", meta="EVERY CARD OPENS THE PROJECT")
     return s
 
 
-def glyph(s, kind, x, y):
+def glyph(s, kind, x, y, k=0.7):
     st = s.paint("stroke", "fg2")
     ac = s.paint("stroke", "accent")
     fa = s.paint("fill", "accent")
-    g = f'<g transform="translate({n(x)} {n(y)})" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'
+    g = (f'<g transform="translate({n(x)} {n(y)}) scale({n(k)})" stroke-width="1.8" '
+         f'stroke-linecap="round" stroke-linejoin="round">')
     if kind == "chalk":
         g += (f'<path d="M2 29C7 10 12 33 18 19S28 4 36 17" pathLength="1" {st} class="draw" style="animation-delay:.3s"/>'
               f'<circle cx="36" cy="17" r="3" {fa} class="fade" style="animation-delay:1.6s"/>')
@@ -418,46 +589,46 @@ def glyph(s, kind, x, y):
         for a, b in [(0, 3), (1, 3), (2, 3), (0, 1)]:
             g += (f'<path d="M{pts[a][0]} {pts[a][1]}L{pts[b][0]} {pts[b][1]}" pathLength="1" {st} '
                   f'class="draw" style="animation-delay:{.25 + a * .12:.2f}s"/>')
-        for i, (px, py) in enumerate(pts[:3]):
-            g += f'<circle cx="{px}" cy="{py}" r="3.4" {st} {s.paint("fill", "fg2")} fill-opacity="0"/>'
+        for px, py in pts[:3]:
+            g += f'<circle cx="{px}" cy="{py}" r="3.4" {st}/>'
         g += f'<circle cx="21" cy="22" r="3.4" {fa} class="pulse"/><circle cx="21" cy="22" r="3.4" {fa}/>'
-    elif kind == "layers":
-        for i in range(3):
-            g += (f'<rect x="{2 + i * 5}" y="{8 + i * 6}" width="24" height="17" rx="4" {st} '
-                  f'{s.paint("fill", "surface")} class="rise" style="animation-delay:{.25 + i * .12:.2f}s"/>')
-        g += f'<circle cx="34" cy="8" r="4" {fa} class="fade" style="animation-delay:.8s"/>'
+    elif kind == "chart":
+        g += (f'<path d="M2 36H38" {st} stroke-opacity=".5"/>'
+              f'<path d="M3 29L11 22L17 26L25 13L31 17" pathLength="1" {st} class="draw" style="animation-delay:.3s"/>'
+              f'<path d="M31 17L37 7" pathLength="1" {ac} stroke-dasharray="2 3" class="fade" style="animation-delay:1.5s"/>'
+              f'<circle cx="37" cy="7" r="2.6" {fa} class="fade" style="animation-delay:1.7s"/>')
     s.add(g + "</g>")
 
 
 def card(theme, item, left):
-    cw, ch = 412, 226
-    s = Svg(theme, cw + 8, ch)
-    ox = 0 if left else 8
+    cw, ch, pad = COL[2] - GUT, 196, 22  # left card 0..408, right card 432..840
+    s = Svg(theme, W / 2, ch)
+    ox = 0 if left else COL[2] - W / 2
     with s.g("fade"):
-        s.add(f'<rect x="{n(ox + .5)}" y=".5" width="{cw - 1}" height="{ch - 1}" rx="16" '
+        s.add(f'<rect x="{n(ox + .5)}" y=".5" width="{cw - 1}" height="{ch - 1}" rx="14" '
               f'{s.paint("fill", "surface")} {s.paint("stroke", "line")}/>')
-    glyph(s, item["glyph"], ox + 24, 22)
-    ax, ay = ox + cw - 38, 38
-    s.add(f'<circle cx="{n(ax)}" cy="{ay}" r="14" {s.paint("stroke", "line")}/>'
-          f'<g class="nudge"><path d="M{n(ax - 4)} {ay + 4}L{n(ax + 4)} {ay - 4}M{n(ax - 2.5)} {ay - 4}H{n(ax + 4)}V{ay + 2.5}" '
-          f'{s.paint("stroke", "accentText")} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g>')
+    glyph(s, item["glyph"], ox + pad, 20)
+    ax, ay = ox + cw - pad - 12, 34
+    s.add(f'<circle cx="{n(ax)}" cy="{ay}" r="12" {s.paint("stroke", "line")}/>'
+          f'<g class="nudge"><path d="M{n(ax - 3.5)} {ay + 3.5}L{n(ax + 3.5)} {ay - 3.5}M{n(ax - 2)} {ay - 3.5}H{n(ax + 3.5)}V{ay + 2}" '
+          f'{s.paint("stroke", "accentText")} stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></g>')
     with s.g("rise", 0.15):
-        s.text(ox + 24, 106, item["name"], "serif", 36, "fg", -0.2)
+        s.text(ox + pad, 88, item["name"], "sans-m", HEAD, "fg", -0.1)
     with s.g("rise", 0.25):
-        for i, line in enumerate(wrap([(item["blurb"], "fg2")], "sans", 14.5, cw - 56)[:2]):
-            s.rich(ox + 24, 134 + i * 21, line, 14.5)
-    s.hline(ox + 24, ox + cw - 24, 178, "line2")
+        for i, line in enumerate(wrap([(item["blurb"], "sans", "fg2")], cw - 2 * pad, TEXT)[:2]):
+            s.rich(ox + pad, 110 + i * 18, line, TEXT)
+    s.hline(ox + pad, ox + cw - pad, 148, "line2")
     with s.g("rise", 0.35):
-        tw = s.text(ox + 24, 203, item["tags"], "mono-m", 10, "fg3", 1.4)
-        dw = s.text(ox + cw - 24, 203, item["domain"], "mono", 10.5, "fg2", 0.2, align="end")
-    if tw + dw + 16 > cw - 48:
+        tw = s.label(ox + pad, 174, item["tags"])
+        dw = s.text(ox + cw - pad, 174, item["domain"], "mono", TEXT, "fg2", align="end")
+    if tw + dw + 16 > cw - 2 * pad:
         sys.exit(f"{item['name']}: tags and domain overlap; shorten one of them")
     return s
 
 
-def stat_number(s, x, base, value, size, delay, uid):
+def stat_number(s, x, base, value, size, delay, uid, face="serif"):
     """Odometer: each digit is a 0-9 strip that rolls up to its value."""
-    f = FONTS["serif"]
+    f = FONTS[face]
     step = size * 1.1
     s.defs.append(f'<clipPath id="{uid}"><rect x="{n(x - 4)}" y="{n(base - size * 0.82)}" '
                   f'width="{n(f.width(value, size) + 8)}" height="{n(size * 1.08)}"/></clipPath>')
@@ -472,68 +643,119 @@ def stat_number(s, x, base, value, size, delay, uid):
                          f'style="animation-delay:{n(delay)}s;animation-duration:{n(dur)}s">')
             for k in range(10):
                 kw = f.width(str(k), size)
-                parts.append(f'<text x="{n(cx + (cw - kw) / 2)}" y="{n(base + k * step)}" class="serif" '
+                parts.append(f'<text x="{n(cx + (cw - kw) / 2)}" y="{n(base + k * step)}" class="{face}" '
                              f'font-size="{n(size)}" {s.paint("fill", "fg")}>{k}</text>')
             parts.append("</g>")
-            s.chars["serif"].update("0123456789")
+            s.chars[face].update("0123456789")
         else:
-            parts.append(f'<text x="{n(cx)}" y="{n(base)}" class="serif" font-size="{n(size)}" {s.paint("fill", "fg")}>{esc(ch)}</text>')
-            s.chars["serif"].add(ch)
+            parts.append(f'<text x="{n(cx)}" y="{n(base)}" class="{face}" font-size="{n(size)}" {s.paint("fill", "fg")}>{esc(ch)}</text>')
+            s.chars[face].add(ch)
         cx += cw
     parts.append("</g>")
     s.add("".join(parts))
 
 
+def monster(s, cols, stepx, cell, top, step_t=0.05, pause=1.2, regrow=0.6):
+    """A small horned monster walks the heatmap column by column (down, up,
+    down...) on a SMIL motion path. Every lit cell runs the same `eat` loop,
+    offset by the moment the monster reaches it, so it pops and vanishes as
+    the monster passes and grows back `regrow` of a lap later, before the
+    next pass. Returns (eat_at(col, row) -> seconds, monster markup)."""
+    entry = 30
+    cx = lambda c: c * stepx + cell / 2
+    cy = lambda r: top + r * stepx + cell / 2
+    d = [f"M{n(cx(0) - entry)} {n(cy(0))}H{n(cx(0))}"]
+    for c in range(cols):
+        d.append(f"V{n(cy(6 if c % 2 == 0 else 0))}")
+        if c < cols - 1:
+            d.append(f"H{n(cx(c + 1))}")
+    d.append(f"H{n(cx(cols - 1) + entry)}")
+    speed = stepx / step_t
+    move = (2 * entry + (7 * cols - 1) * stepx) / speed
+    lap = move + pause
+
+    def eat_at(c, r):
+        steps = c * 7 + (r if c % 2 == 0 else 6 - r)
+        return (entry + steps * stepx) / speed
+
+    pct = lambda t: n(t / lap * 100)
+    s.css.append(
+        f".eat{{transform-box:fill-box;transform-origin:50% 50%;animation:eat {n(lap)}s linear infinite}}"
+        f"@keyframes eat{{0%{{transform:scale(1);opacity:1}}{pct(.08)}%{{transform:scale(1.45);opacity:1}}"
+        f"{pct(.3)}%{{transform:scale(0);opacity:0}}{pct(lap * regrow)}%{{transform:scale(0);opacity:0}}"
+        f"{pct(lap * regrow + .5)}%{{transform:scale(1);opacity:1}}100%{{transform:scale(1);opacity:1}}}}"
+        ".bob{animation:bob .3s ease-in-out infinite alternate}@keyframes bob{from{transform:translateY(-1.2px)}}"
+        ".chomp{transform-box:fill-box;transform-origin:50% 50%;animation:chomp .15s ease-in-out infinite alternate}"
+        "@keyframes chomp{from{transform:scaleY(.2)}}"
+        "@media (prefers-reduced-motion:reduce){.monster{display:none}}")
+    ink, white = "#14110F", "#FFFFFF"
+    markup = (
+        f'<g class="monster"><g><animateMotion dur="{n(lap)}s" repeatCount="indefinite" calcMode="linear" '
+        f'keyPoints="0;1;1" keyTimes="0;{n(move / lap)};1" path="{"".join(d)}"/><g class="bob">'
+        f'<path d="M-5.6 -4.6L-7 -10.5L-2.4 -6.6ZM5.6 -4.6L7 -10.5L2.4 -6.6Z" {s.paint("fill", "accent")}/>'
+        f'<circle r="7.6" {s.paint("fill", "accent")}/>'
+        f'<circle cx="-2.8" cy="-1.9" r="2.4" fill="{white}"/><circle cx="2.8" cy="-1.9" r="2.4" fill="{white}"/>'
+        f'<circle cx="-2.5" cy="-1.4" r="1.15" fill="{ink}"/><circle cx="3.1" cy="-1.4" r="1.15" fill="{ink}"/>'
+        f'<ellipse cy="3.4" rx="3.3" ry="1.9" fill="{ink}" class="chomp"/>'
+        f'</g></g></g>')
+    return eat_at, markup
+
+
 def numbers(theme, data):
-    s = Svg(theme, W, 452)
-    section_header(s, "04", "IN NUMBERS", meta=f"SYNCED {data['synced']}")
+    s = Svg(theme, W, 0)
+    section_header(s, "04", "In numbers", meta=f"SYNCED {data['synced']}")
     stats = [("CONTRIBUTIONS · 1Y", data["total"]), ("ACTIVE DAYS · 1Y", data["active"]),
              ("LONGEST STREAK", data["streak"]), ("PUBLIC REPOS", data["repos"])]
     for i, (label, value) in enumerate(stats):
-        x = i * 214
+        x = COL[i]
         with s.g("rise", 0.1 + i * 0.08):
-            stat_number(s, x - 1, 108, f"{value:,}", 58, 0.25 + i * 0.1, f"n{i}")
-            s.text(x, 138, label, "mono-m", 10.5, "fg3", 1.6)
+            stat_number(s, x - 1, 106, f"{value:,}", 58, 0.25 + i * 0.1, f"n{i}")
+            s.label(x, 134, label)
 
     # contribution heatmap
     weeks = data["weeks"]
     stepx = W / len(weeks)
     cell = stepx - 3.4
-    top = 196
+    top = 192
     last_label = -99
     for wi, week in enumerate(weeks):
         first = dt.date.fromisoformat(week[0][0])
-        if first.day <= 7 and wi * stepx - last_label > 36 and wi > 0:
-            s.text(wi * stepx, top - 10, first.strftime("%b").upper(), "mono", 9.5, "fg3", 1)
+        if first.day <= 7 and wi * stepx - last_label > 40 and wi > 0:
+            s.text(wi * stepx, top - 10, first.strftime("%b").upper(), "mono", TEXT, "fg3", 0.6)
             last_label = wi * stepx
     levels = [None, 0.28, 0.5, 0.75, 1]
+    eat_at, critter = monster(s, len(weeks), stepx, cell, top)
     for wi, week in enumerate(weeks):
         cells = []
         for date, level in week:
             row = (dt.date.fromisoformat(date).weekday() + 1) % 7
             x, y = wi * stepx, top + row * stepx
-            fill = s.paint("fill", "cell0") if level == 0 else f'{s.paint("fill", "accent")} fill-opacity="{levels[level]}"'
-            cells.append(f'<rect x="{n(x)}" y="{n(y)}" width="{n(cell)}" height="{n(cell)}" rx="2.5" {fill}/>')
+            # every slot keeps an empty cell, so an eaten one leaves the grid intact
+            cells.append(f'<rect x="{n(x)}" y="{n(y)}" width="{n(cell)}" height="{n(cell)}" rx="2.5" {s.paint("fill", "cell0")}/>')
+            if level:
+                cells.append(f'<rect x="{n(x)}" y="{n(y)}" width="{n(cell)}" height="{n(cell)}" rx="2.5" '
+                             f'{s.paint("fill", "accent")} fill-opacity="{levels[level]}" class="eat" '
+                             f'style="animation-delay:{n(eat_at(wi, row))}s"/>')
         s.add(f'<g class="fade" style="animation-delay:{n(0.4 + wi * 0.018)}s">{"".join(cells)}</g>')
-    ly = top + 7 * stepx + 18
+    s.add(critter)
+    ly = top + 7 * stepx + 24
     with s.g("fade", 1.2):
-        s.text(0, ly, "PAST 12 MONTHS", "mono-m", 10, "fg3", 1.4)
-        mw = FONTS["mono-m"].width("MORE", 10, 1.4) - 1.4
-        s.text(W, ly, "MORE", "mono-m", 10, "fg3", 1.4, align="end")
+        s.label(0, ly, "PAST 12 MONTHS")
+        mw = s.label(W, ly, "MORE", align="end") - LABEL[2]
         lx = W - mw - 10 - 5 * 14
         for k in range(5):
             fill = s.paint("fill", "cell0") if k == 0 else f'{s.paint("fill", "accent")} fill-opacity="{levels[k]}"'
-            s.add(f'<rect x="{n(lx + k * 14)}" y="{n(ly - 9)}" width="10" height="10" rx="2" {fill}/>')
-        s.text(lx - 10, ly, "LESS", "mono-m", 10, "fg3", 1.4, align="end")
+            s.add(f'<rect x="{n(lx + k * 14)}" y="{n(ly - 9.5)}" width="10" height="10" rx="2" {fill}/>')
+        s.label(lx - 10, ly, "LESS", align="end")
 
     # languages
-    ly2 = ly + 26
+    ly2 = ly + 30
     s.hline(0, W, ly2, "line2", "grow", 0.6)
     langs = data["languages"]
     with s.g("rise", 0.7):
-        s.text(0, ly2 + 34, "LANGUAGES · BY CODE VOLUME", "mono-m", 10.5, "fg3", 1.6)
+        s.label(0, ly2 + 38, "LANGUAGES · BY CODE VOLUME")
     fills = [("accent", 1), ("fg", 0.78), ("fg", 0.52), ("fg", 0.32), ("fg", 0.16)]
-    bx, by, gap = 0.0, ly2 + 50, 4
+    bx, by, gap = 0.0, ly2 + 54, 4
     total_w = W - gap * (len(langs) - 1)
     segs = []
     for i, (name, pct) in enumerate(langs):
@@ -546,35 +768,37 @@ def numbers(theme, data):
     with s.g("fade", 1.2):
         for i, (name, pct) in enumerate(langs):
             tok, op = fills[i]
-            s.add(f'<circle cx="{n(lx + 4)}" cy="{n(by + 30)}" r="4" {s.paint("fill", tok)} fill-opacity="{op}"/>')
-            lx += 14
-            lx += s.text(lx, by + 34, name, "sans", 14, "fg2") + 6
-            lx += s.text(lx, by + 34, f"{pct:.1f}%", "mono", 12, "fg3") + 26
-    s.h = by + 48
+            s.add(f'<circle cx="{n(lx + 3.5)}" cy="{n(by + 27.5)}" r="3.5" {s.paint("fill", tok)} fill-opacity="{op}"/>')
+            lx += 12
+            lx += s.text(lx, by + 32, name, "sans", TEXT, "fg2") + 6
+            lx += s.text(lx, by + 32, f"{pct:.1f}%", "mono", TEXT, "fg3") + 24
+    s.h = by + 44
     return s
 
 
 def contact(theme):
-    s = Svg(theme, W, 186)
-    section_header(s, "05", "CONTACT")
+    s = Svg(theme, W, 150)
+    section_header(s, "05", "Contact")
     size = 54
     while sum(FONTS[f].width(t, size) for t, f, _ in CONTACT["title"]) > W and size > 30:
         size -= 1
     with s.g("rise", 0.1):
-        s.rich(-2, 104, CONTACT["title"], size)
+        s.rich(-2, 100, CONTACT["title"], size)
     with s.g("rise", 0.25):
-        s.text(0, 146, CONTACT["line"], "sans", 17, "fg2")
+        s.text(0, 132, CONTACT["line"], "sans", TEXT, "fg2")
     return s
 
 
 def icon(s, kind, x, y):
     st = s.paint("stroke", "fg2")
-    g = f'<g transform="translate({n(x)} {n(y)})" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">'
+    g = (f'<g transform="translate({n(x)} {n(y)}) scale(.875)" stroke-width="1.5" '
+         f'stroke-linecap="round" stroke-linejoin="round">')
     if kind == "globe":
         g += (f'<circle cx="8" cy="8" r="7" {st}/><ellipse cx="8" cy="8" rx="3" ry="7" {st}/>'
               f'<path d="M1 8h14" {st}/>')
     elif kind == "in":
-        g += (f'<rect x="1" y="1" width="14" height="14" rx="3" {st}/><path d="M5 7v5M5 4.6v.1M8 12V7m0 2.4c0-1.5 3.6-2 3.6 .4V12" {st}/>')
+        g += (f'<rect x="1" y="1" width="14" height="14" rx="3" {st}/>'
+              f'<path d="M5 7v5M5 4.6v.1M8 12V7m0 2.4c0-1.5 3.6-2 3.6 .4V12" {st}/>')
     elif kind == "mail":
         g += f'<rect x="1" y="3" width="14" height="10" rx="2" {st}/><path d="M1.5 4l6.5 5 6.5-5" {st}/>'
     elif kind == "up":
@@ -583,17 +807,16 @@ def icon(s, kind, x, y):
 
 
 def button(theme, label, kind, arrow="↗"):
-    f = FONTS["sans-m"]
-    tw = f.width(label, 15)
-    aw = FONTS["sans"].width(arrow, 15)
-    w = 18 + 16 + 10 + tw + 10 + aw + 18
-    s = Svg(theme, w + 10, 46)
+    tw = FONTS["sans-m"].width(label, SUB)
+    aw = FONTS["sans"].width(arrow, SUB)
+    w = 16 + 14 + 9 + tw + 8 + aw + 16
+    s = Svg(theme, w + 8, 40)
     with s.g("fade"):
-        s.add(f'<rect x=".5" y=".5" width="{n(w - 1)}" height="45" rx="22.5" {s.paint("fill", "surface")} {s.paint("stroke", "line")}/>')
-        icon(s, kind, 18, 15)
-        s.text(44, 28.5, label, "sans-m", 15, "fg")
+        s.add(f'<rect x=".5" y=".5" width="{n(w - 1)}" height="39" rx="19.5" {s.paint("fill", "surface")} {s.paint("stroke", "line")}/>')
+        icon(s, kind, 16, 13)
+        s.text(39, 25, label, "sans-m", SUB, "fg")
         with s.g("nudge"):
-            s.text(44 + tw + 10, 28.5, arrow, "sans", 15, "accentText")
+            s.text(39 + tw + 8, 25, arrow, "sans", SUB, "accentText")
     return s
 
 # ────────────────────────────────────────────────────────────────── DATA ──
@@ -605,6 +828,7 @@ QUERY = """query($login:String!){user(login:$login){
   contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{date contributionCount contributionLevel}}}}
 }}"""
 
+VIEWS_URL = f"https://komarev.com/ghpvc/?username={LOGIN}&style=flat-square"
 LEVEL = {"NONE": 0, "FIRST_QUARTILE": 1, "SECOND_QUARTILE": 2, "THIRD_QUARTILE": 3, "FOURTH_QUARTILE": 4}
 
 
@@ -615,6 +839,28 @@ def github_token():
         return subprocess.check_output(["gh", "auth", "token"], text=True).strip()
     except (OSError, subprocess.CalledProcessError):
         sys.exit("Set GITHUB_TOKEN (or log in with `gh auth login`) to fetch profile data.")
+
+
+def profile_views():
+    """README.md embeds an invisible komarev pixel that counts each profile
+    visit. Reading the counter also bumps it, so state.json remembers how many
+    reads we have made and subtracts them. Only CI reads; local builds reuse
+    the last value so they never skew the count."""
+    with open(STATE) as fh:
+        state = json.load(fh)
+    if os.environ.get("CI") == "true":
+        req = urllib.request.Request(VIEWS_URL, headers={"User-Agent": "profile-readme-build"})
+        try:
+            with urllib.request.urlopen(req, timeout=20) as r:
+                raw = int(re.findall(r">([\d,]+)</text>", r.read().decode())[-1].replace(",", ""))
+            state["reads"] += 1
+            state["views"] = raw - state["reads"]
+            with open(STATE, "w") as fh:
+                json.dump(state, fh, indent=2)
+                fh.write("\n")
+        except Exception as err:  # counter outage: keep last known value
+            print(f"views: keeping {state['views']} ({err})")
+    return state["views"]
 
 
 def fetch():
@@ -655,6 +901,7 @@ def fetch():
         repos=user["pub"]["totalCount"],
         weeks=[[(d["date"], LEVEL[d["contributionLevel"]]) for d in w["contributionDays"]] for w in cal["weeks"]],
         languages=langs,
+        views=profile_views(),
         synced=dt.datetime.now(dt.timezone.utc).strftime("%d %b %Y").upper(),
     )
 
@@ -664,7 +911,9 @@ def main():
     data = fetch()
     for theme in THEMES:
         files = {
-            "hero": hero(theme),
+            "hero": hero(theme, data["views"]),
+            "composer": composer(theme),
+            "band": band(theme),
             "about": about(theme),
             "stack": stack(theme),
             "work": work_header(theme),
@@ -672,8 +921,6 @@ def main():
             "contact": contact(theme),
             "top": button(theme, "Back to top", "up", "↑"),
         }
-        for num, label, key in NAV:
-            files[f"nav-{key}"] = nav_pill(theme, num, label)
         for i, item in enumerate(WORK):
             files[f"work-{item['key']}"] = card(theme, item, left=i % 2 == 0)
         for key, label, kind in CONTACT["buttons"]:
