@@ -402,15 +402,15 @@ def hero(theme, views):
         s.add(f'<circle cx="{n(cx)}" cy="15.8" r="3.5" {s.paint("fill", "accent")}/>')
     s.hline(0, W, 40, "line", "grow", 0.1)
     with s.g("rise", 0.12):
-        s.text(-3, 150, HERO["name"], "serif", 83, "fg", -0.8)
+        s.text(-2, 112, HERO["name"], "serif", 42, "fg", -0.4)
     accent = SUB + 2  # the italic serif runs small; +2px matches Geist's x-height
     for i, line in enumerate(HERO["lines"]):
         with s.g("rise", 0.28 + i * 0.1):
             runs = [(t, f, c, accent if f.startswith("serif") else SUB) for t, f, c in line]
-            s.rich(0, 190 + i * 22, runs, SUB)
+            s.rich(0, 144 + i * 22, runs, SUB)
     # hand-drawn underline under the italic phrase
     last = HERO["lines"][-1]
-    ly = 190 + (len(HERO["lines"]) - 1) * 22
+    ly = 144 + (len(HERO["lines"]) - 1) * 22
     views_badge(s, views, W - 53, (40 + ly + 40) / 2)  # centred between the two hairlines
     x0 = FONTS["sans"].width(last[0][0], SUB)
     x1 = x0 + FONTS["serif-i"].width(last[1][0].rstrip("."), accent)
@@ -425,19 +425,28 @@ def hero(theme, views):
     return s
 
 
-def composer(theme):
-    """Ask sAI: heading and a one-line explainer flush left, then a chat
-    bar spanning the first three grid columns. In the bar the site's prompts
-    type out one by one behind a caret; all motion is CSS keyframes on one
-    shared cycle, so it loops with no script. Padding gives equal visible
-    space above the heading and below the bar."""
-    width, h = COMPOSER["width"], 50  # width of the bar itself
-    top, bottom = 58, 64  # + hero tail and README margins = ~80px of air on both sides
+def composer_head(theme):
+    """Heading and one-line explainer above the Ask sAI bar. A separate,
+    unlinked image so hovering it doesn't show the bar's link."""
+    top = 58  # + hero tail and README margin = ~86px of air above the heading
     y_head = top + 12
     y_sub = y_head + 22
-    y0 = y_sub + 20
+    s = Svg(theme, W, y_sub + 4)  # +4 keeps the explainer's descenders
+    with s.g("rise", 0.1):
+        s.rich(0, y_head, COMPOSER["heading"], HEAD)
+    with s.g("rise", 0.2):
+        s.text(0, y_sub, COMPOSER["sub"], "sans", TEXT, "fg3")
+    return s
+
+
+def composer(theme):
+    """The Ask sAI bar alone, cropped tight so it is the only clickable part
+    in README.md. The site's prompts type out one by one behind a caret; all
+    motion is CSS keyframes on one shared cycle, so it loops with no script."""
+    width, h = COMPOSER["width"], 50
+    y0 = 1
     cy = y0 + h / 2
-    s = Svg(theme, W, y0 + h + bottom)
+    s = Svg(theme, width, h + 2)
     prompts, slot = COMPOSER["prompts"], COMPOSER["slot"]
     cycle = len(prompts) * slot
     pct = lambda t: n(max(0.0, t) / cycle * 100)
@@ -445,11 +454,6 @@ def composer(theme):
 
     s.css.append(".twinkle{transform-box:fill-box;transform-origin:50% 50%;animation:twinkle 2.4s ease-in-out infinite}"
                  "@keyframes twinkle{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(.72) rotate(45deg)}}")
-    with s.g("rise", 0.1):
-        s.rich(0, y_head, COMPOSER["heading"], HEAD)
-    with s.g("rise", 0.2):
-        s.text(0, y_sub, COMPOSER["sub"], "sans", TEXT, "fg3")
-
     with s.g("rise", 0.3):
         s.add(f'<rect x=".5" y="{n(y0 + .5)}" width="{n(width - 1)}" height="{h - 1}" rx="{n(h / 2 - .5)}" '
               f'{s.paint("fill", "surface")} {s.paint("stroke", "line")}/>')
@@ -487,14 +491,24 @@ def composer(theme):
           f'<g class="nudge"><path d="M{n(bx - 5)} {n(cy + 5)}L{n(bx + 3.5)} {n(cy - 3.5)}M{n(bx - 2.5)} {n(cy - 3.5)}H{n(bx + 3.5)}V{n(cy + 2.5)}" '
           f'stroke="{ink}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g>')
 
-    # hand-drawn arrow in the empty fourth column, looping in to point at the bar
-    ex = width + 12  # arrow tip, a little clear of the bar's edge
-    loop = (f"M{n(ex + 170)} {n(cy - 30)}"
-            f"C{n(ex + 150)} {n(cy - 44)} {n(ex + 110)} {n(cy - 40)} {n(ex + 104)} {n(cy - 20)}"
-            f"C{n(ex + 99)} {n(cy - 4)} {n(ex + 122)} {n(cy + 2)} {n(ex + 124)} {n(cy - 12)}"
-            f"C{n(ex + 126)} {n(cy - 28)} {n(ex + 88)} {n(cy - 26)} {n(ex + 64)} {n(cy - 12)}"
-            f"C{n(ex + 44)} {n(cy - 1)} {n(ex + 22)} {n(cy + 4)} {n(ex)} {n(cy + 1)}")
-    head = f"M{n(ex + 11)} {n(cy - 8)}L{n(ex)} {n(cy + 1)}L{n(ex + 12)} {n(cy + 9)}"
+    return s
+
+
+def composer_arrow(theme):
+    """Hand-drawn arrow pointing at the bar, in the empty fourth column. Its
+    own unlinked image placed right after the bar on the same line; README
+    images align on their bottoms, so the extra `lift` lets the loop rise
+    above the bar while the tip stays level with its centre."""
+    lift, h = 12, 52
+    s = Svg(theme, W - COMPOSER["width"], h + lift)
+    cy, ex = lift + 1 + 25, 12  # bar centre; arrow tip, a little clear of the bar
+    y = lambda d: n(cy + d * 0.75)  # loop flattened to fit the image
+    loop = (f"M{n(ex + 170)} {y(-30)}"
+            f"C{n(ex + 150)} {y(-44)} {n(ex + 110)} {y(-40)} {n(ex + 104)} {y(-20)}"
+            f"C{n(ex + 99)} {y(-4)} {n(ex + 122)} {y(2)} {n(ex + 124)} {y(-12)}"
+            f"C{n(ex + 126)} {y(-28)} {n(ex + 88)} {y(-26)} {n(ex + 64)} {y(-12)}"
+            f"C{n(ex + 44)} {y(-1)} {n(ex + 22)} {y(4)} {n(ex)} {y(1)}")
+    head = f"M{n(ex + 11)} {n(cy - 7)}L{n(ex)} {n(cy + 1)}L{n(ex + 12)} {n(cy + 8)}"
     s.css.append(".point{animation:point 2.6s ease-in-out 3s infinite}"
                  "@keyframes point{0%,100%{transform:translateX(0)}50%{transform:translateX(-5px)}}")
     stroke = f'{s.paint("stroke", "accent")} stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"'
@@ -504,26 +518,27 @@ def composer(theme):
 
 
 def band(theme):
-    """Two marquees between hairlines: themes drifting left, mono tools drifting right."""
-    h = 128
-    s = Svg(theme, W, h)
-    s.hline(0, W, 0, "line2")
-    s.hline(0, W, h - 1, "line2")
-    mask = s.edge_fade("edge", h)
+    """Two marquees between hairlines: themes drifting left, mono tools drifting right.
+    `top` is the air under the composer row (~86px with README's margins)."""
+    top, h = 65, 128
+    s = Svg(theme, W, top + h)
+    s.hline(0, W, top, "line2")
+    s.hline(0, W, top + h - 1, "line2")
+    mask = s.edge_fade("edge", top + h)
     pieces = []
     for i, phrase in enumerate(MARQUEE["themes"]):
         fill = "fg" if i % 2 == 0 else "fg3"
         w = FONTS["serif"].width(phrase, 34)
-        pieces.append((lambda x, p=phrase, c=fill: s.text(x, 62, p, "serif", 34, c), w))
-        pieces.append((lambda x: s.sparkle(x + 22, 50, 6), 44))
+        pieces.append((lambda x, p=phrase, c=fill: s.text(x, top + 62, p, "serif", 34, c), w))
+        pieces.append((lambda x: s.sparkle(x + 22, top + 50, 6), 44))
     s.add(f"<g{mask}>")
     marquee(s, "mqa", pieces, 28)
     tools = []
     for tool in MARQUEE["tools"]:
         label = tool.upper()
         w = FONTS["mono-m"].width(label, TEXT, 1.6)
-        tools.append((lambda x, t=label: s.text(x, 97, t, "mono-m", TEXT, "fg3", 1.6), w))
-        tools.append((lambda x: s.text(x + 13, 97, "·", "mono-m", TEXT, "dim"), 32))
+        tools.append((lambda x, t=label: s.text(x, top + 97, t, "mono-m", TEXT, "fg3", 1.6), w))
+        tools.append((lambda x: s.text(x + 13, top + 97, "·", "mono-m", TEXT, "dim"), 32))
     marquee(s, "mqb", tools, 20, reverse=True)
     s.add("</g>")
     return s
@@ -912,7 +927,9 @@ def main():
     for theme in THEMES:
         files = {
             "hero": hero(theme, data["views"]),
+            "composer-head": composer_head(theme),
             "composer": composer(theme),
+            "composer-arrow": composer_arrow(theme),
             "band": band(theme),
             "about": about(theme),
             "stack": stack(theme),
