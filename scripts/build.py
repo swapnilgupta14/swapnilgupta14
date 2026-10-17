@@ -93,11 +93,11 @@ ABOUT = [
 # (label, [(item, daily_driver)])
 STACK = [
     ("LANGUAGES", [("TypeScript", 1), ("Python", 1), ("JavaScript", 1), ("C++", 0), ("SQL", 0)]),
-    ("FRONTEND", [("React", 1), ("Next.js", 1), ("Tailwind CSS", 1), ("Redux Toolkit", 0), ("SCSS", 0), ("GSAP", 0), ("Framer Motion", 0)]),
-    ("BACKEND", [("Node.js", 1), ("FastAPI", 1), ("Express", 0), ("MySQL", 0)]),
+    ("FRONTEND", [("React", 1), ("Next.js", 1), ("Web Vitals", 0), ("Performance Engineering", 0)]),
+    ("BACKEND", [("Node.js", 1), ("Nest.js", 1), ("AWS", 1), ("Docker", 1), ("Express", 0), ("Postgres", 0) ]),
     ("AI & ML", [("LLM APIs", 1), ("TensorFlow", 0), ("Keras", 0), ("Pandas", 0), ("Streamlit", 0)]),
-    ("MOBILE", [("React Native", 1), ("Expo", 1), ("NativeWind", 0)]),
-    ("TOOLING", [("Git", 1), ("Vite", 1), ("pnpm", 1), ("Webpack", 0), ("Vercel", 0), ("Figma", 0)]),
+    ("MOBILE", [("React Native", 1), ("Expo", 1))]),
+    ("TOOLING", [("Git", 1), ("Posthog", 1), ("Chromatic", 0), ("Webpack", 0)]),
 ]
 
 WORK = [
