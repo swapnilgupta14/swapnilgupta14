@@ -96,7 +96,7 @@ STACK = [
     ("FRONTEND", [("React", 1), ("Next.js", 1), ("Web Vitals", 0), ("Performance Engineering", 0)]),
     ("BACKEND", [("Node.js", 1), ("Nest.js", 1), ("AWS", 1), ("Docker", 1), ("Express", 0), ("Postgres", 0) ]),
     ("AI & ML", [("LLM APIs", 1), ("TensorFlow", 0), ("Keras", 0), ("Pandas", 0), ("Streamlit", 0)]),
-    ("MOBILE", [("React Native", 1), ("Expo", 1))]),
+    ("MOBILE", [("React Native", 1), ("Expo", 1)]),
     ("TOOLING", [("Git", 1), ("Posthog", 1), ("Chromatic", 0), ("Webpack", 0)]),
 ]
 
